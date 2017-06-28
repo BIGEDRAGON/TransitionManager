@@ -28,41 +28,35 @@
     CATransition *tranAnimation = isBack ? [self getSystemBackTransition] : [self getSystemTransition];
     [containerView.layer addAnimation:tranAnimation forKey:nil];
     
+    __block BOOL interactiveSuccess = YES;
     __weak TransitionAnimator *WeakSelf = self;
     self.animationBlock = ^(){
         
-//        if ([WeakSelf.transitionContext transitionWasCancelled]) {
-//            [WeakSelf.transitionContext completeTransition:NO];
-//            
-////            toVC.view.hidden = YES;
-//        }else{
-//            [WeakSelf.transitionContext completeTransition:YES];
-//            
-//            [containerView addSubview:toVC.view];
-//        }
+        if (!interactiveSuccess) {
+            [WeakSelf.transitionContext completeTransition:![WeakSelf.transitionContext transitionWasCancelled]];
+            return;
+        }
         
-        // 移除快照，这边没有将快照添加到containerView，所以不需要移除
+        // 移除快照
         [fromSnapshotView removeFromSuperview];
         [toSnapshotView removeFromSuperview];
         
         
         // 设置transitionContext通知系统动画执行完毕
-        [[WeakSelf.transitionContext containerView]addSubview:toView];
+        [containerView addSubview:toView];
         [WeakSelf.transitionContext completeTransition:![WeakSelf.transitionContext transitionWasCancelled]];
     };
     
-    if (isBack) {
-        self.interactiveBlock = ^(BOOL success){
-            
-            if (success) {
-                [containerView addSubview:toView];
-            }
-            
-            // 移除快照，这边没有将快照添加到containerView，所以不需要移除
-            [fromSnapshotView removeFromSuperview];
-            [toSnapshotView removeFromSuperview];
-        };
-    }
+    self.interactiveBlock = ^(BOOL success){
+        interactiveSuccess = success;
+        if (success) {
+            [containerView addSubview:toView];
+        }
+        
+        // 移除快照
+        [fromSnapshotView removeFromSuperview];
+        [toSnapshotView removeFromSuperview];
+    };
 }
 
 @end

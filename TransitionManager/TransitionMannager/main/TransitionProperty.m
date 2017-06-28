@@ -18,7 +18,7 @@
         _animationType = TransitionAnimationTypeDefault;
 //        _backGestureEnable = YES;
         _backGestureType = BackGestureTypeRight;
-        _autoShowAndHideNavBar = YES;
+        _autoShowAndHideNavBar = NO;
         _showAndHideNavBarTime = 0.25;
         _interactivePercent = 0.3;
     }

@@ -97,7 +97,7 @@ static NSString *identifier = @"SystemTableViewController";
         [self.navigationController lj_pushViewController:vc transition:^(TransitionProperty *property) {
             TransitionAnimationType animationType = _isSystem ? indexPath.row + 1 : indexPath.row + TransitionAnimationTypeDefault;
             property.animationType = animationType;
-            property.backGestureType = BackGestureTypeLeft;
+            property.backGestureType = BackGestureTypeLeft | BackGestureTypeRight;
         }];
     }else {
         

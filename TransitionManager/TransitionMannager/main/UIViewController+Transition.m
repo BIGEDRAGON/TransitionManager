@@ -76,9 +76,9 @@ static NSString * const customDelegateKey = @"customDelegate";
 }
 - (void)lj_presentViewController:(UIViewController *_Nullable)vc transition:(TransitionBlock _Nullable)transitionBlock completion:(void (^ __nullable)(void))completion
 {
-    self.customDelegate = [[CustomDelegate alloc] init];
-    self.customDelegate.transitionBlcok = transitionBlock;
-    vc.transitioningDelegate = self.customDelegate;
+    vc.customDelegate = [[CustomDelegate alloc] init];
+    vc.customDelegate.transitionBlcok = transitionBlock;
+    vc.transitioningDelegate = vc.customDelegate;
     
     [self presentViewController:vc animated:YES completion:completion];
 }

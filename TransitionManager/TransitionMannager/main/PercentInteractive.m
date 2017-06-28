@@ -25,23 +25,6 @@
 
 @implementation PercentInteractive
 
-- (void)setTransitionType:(TransitionType)transitionType
-{
-    _transitionType = transitionType;
-    
-    switch (transitionType) {
-        case TransitionTypePresent:
-            _transitionType = TransitionTypeDismiss;
-            break;
-        case TransitionTypePush:
-            _transitionType = TransitionTypePop;
-            break;
-            
-        default:
-            break;
-    }
-}
-
 + (instancetype)interactiveWithVC:(UIViewController *)interactiveVC animator:(TransitionAnimator *)animator
 {
     PercentInteractive *interactive = [[PercentInteractive alloc] init];
@@ -63,59 +46,65 @@
 
 - (void)panGesture:(UIPanGestureRecognizer *)ges
 {
+    if (_backGestureType == BackGestureTypeNone) {
+        return;
+    }
+    
     _percent = 0;
     CGFloat totalWidth = ges.view.bounds.size.width;
     CGFloat totalHeight = ges.view.bounds.size.height;
     
-    switch (_backGestureType) {
-        case BackGestureTypeLeft:
-        {
-            CGFloat x = [ges translationInView:ges.view].x;
-            _percent = -x/totalWidth;
-        }
-            break;
-        case BackGestureTypeRight:
-        {
-            CGFloat x = [ges translationInView:ges.view].x;
-            _percent = x/totalWidth;
-        }
-            break;
-        case BackGestureTypeDown:
-        {
-            
-            CGFloat y = [ges translationInView:ges.view].y;
-            _percent = y/totalHeight;
-            
-        }
-            break;
-        case BackGestureTypeUp:
-        {
-            CGFloat y = [ges translationInView:ges.view].y;
-            _percent = -y/totalHeight;
-        }
-            
-        default:
-            break;
+    CGFloat x = [ges translationInView:ges.view].x;
+    CGFloat y = [ges translationInView:ges.view].y;
+    
+    
+    if (_backGestureType & BackGestureTypeLeft) {
+        _percent = x/totalWidth;
     }
+    
+    if (_backGestureType & BackGestureTypeRight) {
+        _percent = -x/totalWidth;
+    }
+    
+    if (_backGestureType & BackGestureTypeUp) {
+        _percent = -y/totalHeight;
+    }
+    
+    if (_backGestureType & BackGestureTypeDown) {
+        _percent = y/totalHeight;
+    }
+    
+    if (_backGestureType == (BackGestureTypeLeft|BackGestureTypeRight)) {
+        _percent = fabs(_percent);
+    }
+    if (_backGestureType == (BackGestureTypeUp|BackGestureTypeDown)) {
+        _percent = fabs(_percent);
+    }
+    
     
     switch (ges.state) {
         case UIGestureRecognizerStateBegan:
         {
-            _isInteractive = YES;
-            [self beganGesture];
+            if (_percent >= 0) {
+                _isInteractive = YES;
+                [self beganGesture];
+            }
         }
             break;
         case UIGestureRecognizerStateChanged:
         {
-            [self updateInteractiveTransition:_percent];
+            if (_isInteractive) {
+                [self updateInteractiveTransition:_percent];
+            }
         }
             break;
         case UIGestureRecognizerStateEnded:
-        case UIGestureRecognizerStateFailed:
         case UIGestureRecognizerStateCancelled:
         {
-            _isInteractive = NO;
-            [self continueAction];
+            if (_isInteractive) {
+                _isInteractive = NO;
+                [self continueAction];
+            }
         }
             break;
         default:
@@ -126,11 +115,11 @@
 - (void)beganGesture
 {
     switch (_transitionType) {
-        case TransitionTypeDismiss:
+        case TransitionTypePresent:
             [_interActiveVC dismissViewControllerAnimated:YES completion:^{
             }];
             break;
-        case TransitionTypePop:
+        case TransitionTypePush:
             [_interActiveVC.navigationController popViewControllerAnimated:YES];
             break;
         default:

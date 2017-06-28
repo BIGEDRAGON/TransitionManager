@@ -52,7 +52,7 @@
 @property (nonatomic, assign) BackGestureType backGestureType;
 
 /**
- * 在动画之前隐藏NavigationBar,动画结束后显示,默认为YES
+ * 在动画之前隐藏NavigationBar,动画结束后显示,默认为NO
  */
 @property (nonatomic, assign) BOOL autoShowAndHideNavBar;
 

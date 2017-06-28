@@ -72,10 +72,10 @@ typedef NS_ENUM(NSInteger,TransitionType){
 
 typedef NS_ENUM(NSInteger,BackGestureType){
     BackGestureTypeNone     =   0,
-    BackGestureTypeRight    =   1 << 0,
-    BackGestureTypeLeft     =   1 << 1,
-    BackGestureTypeDown     =   1 << 2,
-    BackGestureTypeUp       =   1 << 3
+    BackGestureTypeLeft     =   1 << 0,
+    BackGestureTypeRight    =   1 << 1,
+    BackGestureTypeUp       =   1 << 2,
+    BackGestureTypeDown     =   1 << 3
 };
 
 
