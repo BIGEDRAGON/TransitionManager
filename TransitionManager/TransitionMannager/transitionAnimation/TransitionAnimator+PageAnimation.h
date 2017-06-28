@@ -10,7 +10,7 @@
 
 @interface TransitionAnimator (PageAnimation)
 
-- (void)transitionNextPageAnimatorWithTransitionContext:(id<UIViewControllerContextTransitioning>)transitionContext;
-- (void)transitionBackPageAnimatorWithTransitionContext:(id<UIViewControllerContextTransitioning>)transitionContext;
+- (void)transitionNextPageAnimator;
+- (void)transitionBackPageAnimator;
 
 @end

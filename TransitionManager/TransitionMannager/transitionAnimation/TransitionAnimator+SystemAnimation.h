@@ -10,6 +10,6 @@
 
 @interface TransitionAnimator (SystemAnimation)
 
-- (void)transitionSystemAnimatorWithIsBack:(BOOL)isBack;
+- (void)systemTransitionAnimatorWithIsBack:(BOOL)isBack;
 
 @end

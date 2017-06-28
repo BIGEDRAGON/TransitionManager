@@ -14,7 +14,8 @@ static NSString *identifier = @"SystemTableViewController";
 
 @interface TableViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *myTableView;
-@property (nonatomic, strong) NSArray *titleArr;
+@property (nonatomic, strong) NSArray *systemArr;
+@property (nonatomic, strong) NSArray *customArr;
 @end
 
 @implementation TableViewController
@@ -30,10 +31,10 @@ static NSString *identifier = @"SystemTableViewController";
     }
     return _myTableView;
 }
-- (NSArray *)titleArr
+- (NSArray *)systemArr
 {
-    if (!_titleArr) {
-        _titleArr = @[@"Fade",
+    if (!_systemArr) {
+        _systemArr = @[@"Fade",
                       @"Push",@"Push",@"Push",@"Push",
                       @"Reveal",@"Reveal",@"Reveal",@"Reveal",
                       @"MoveIn",@"MoveIn",@"MoveIn",@"MoveIn",
@@ -46,7 +47,16 @@ static NSString *identifier = @"SystemTableViewController";
                       @"CameraIrisHollowOpen",
                       @"CameraIrisHollowClose"];
     }
-    return _titleArr;
+    return _systemArr;
+}
+
+- (NSArray *)customArr
+{
+    if (!_customArr) {
+        _customArr = @[@"PageToLeft",@"PageToRight",@"PageToTop",@"PageToBottom",
+                       ];
+    }
+    return _customArr;
 }
 
 - (void)viewDidLoad {
@@ -67,7 +77,7 @@ static NSString *identifier = @"SystemTableViewController";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.titleArr.count;
+    return _isSystem ? self.systemArr.count : self.customArr.count;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -83,7 +93,8 @@ static NSString *identifier = @"SystemTableViewController";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    cell.textLabel.text = self.titleArr[indexPath.row];
+    NSString *str = _isSystem ? _systemArr[indexPath.row] : _customArr[indexPath.row];
+    cell.textLabel.text = str;
     return cell;
 }
 
@@ -95,7 +106,7 @@ static NSString *identifier = @"SystemTableViewController";
         
         NextViewController *vc = [[NextViewController alloc] init];
         [self.navigationController lj_pushViewController:vc transition:^(TransitionProperty *property) {
-            TransitionAnimationType animationType = _isSystem ? indexPath.row + 1 : indexPath.row + TransitionAnimationTypeDefault;
+            TransitionAnimationType animationType = _isSystem ? indexPath.row + 1 : indexPath.row + TransitionAnimationTypeDefault + 1;
             property.animationType = animationType;
             property.backGestureType = BackGestureTypeLeft | BackGestureTypeRight;
         }];
@@ -103,7 +114,7 @@ static NSString *identifier = @"SystemTableViewController";
         
         NextViewController *vc = [[NextViewController alloc] init];
         [self.navigationController lj_presentViewController:vc transition:^(TransitionProperty *property) {
-            TransitionAnimationType animationType = _isSystem ? indexPath.row + 1 : indexPath.row + TransitionAnimationTypeDefault;
+            TransitionAnimationType animationType = _isSystem ? indexPath.row + 1 : indexPath.row + TransitionAnimationTypeDefault + 1;
             property.animationType = animationType;
             property.backAnimationType = animationType;
             property.backGestureType = BackGestureTypeDown;

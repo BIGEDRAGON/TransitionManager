@@ -60,7 +60,10 @@ typedef NS_ENUM(NSInteger, TransitionAnimationType){
     /*************** 自定义 ***************/
     TransitionAnimationTypeDefault,
     
-    TransitionAnimationTypePageTransition
+    TransitionAnimationTypePageTransitionToLeft,// 左翻页
+    TransitionAnimationTypePageTransitionToRight,// 右翻页
+    TransitionAnimationTypePageTransitionToTop,// 上翻页
+    TransitionAnimationTypePageTransitionToBottom// 下翻页
 };
 
 typedef NS_ENUM(NSInteger,TransitionType){

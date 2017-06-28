@@ -14,6 +14,9 @@
 #import "TransitionAnimator+PageAnimation.h"
 
 @interface TransitionAnimator ()<CAAnimationDelegate>
+{
+    BOOL isBack;
+}
 @end
 
 @implementation TransitionAnimator
@@ -34,10 +37,14 @@
         }];
     }
     
+    // 统一处理Default动画
+    if (_transitionProperty.animationType == TransitionAnimationTypeDefault) {
+        _transitionProperty.animationType = TransitionAnimationTypeSysPushFromLeft;
+    }
+    
     // 执行动画
     _transitionContext = transitionContext;
     
-    BOOL isBack;
     switch (_transitionProperty.transitionType) {
         case TransitionTypePop:
         case TransitionTypeDismiss:
@@ -48,7 +55,7 @@
             break;
     }
     
-    [self transitionAnimationWithIsBack:isBack];
+    [self transitionAnimation];
 }
 
 - (void)animationEnded:(BOOL)transitionCompleted
@@ -101,18 +108,17 @@
 
 
 #pragma mark - 执行动画方法
-- (void)transitionAnimationWithIsBack:(BOOL)isBack
+- (void)transitionAnimation
 {
     // 执行系统动画方法
     if ((NSInteger)_transitionProperty.animationType < (NSInteger)TransitionAnimationTypeDefault) {
-        [self transitionSystemAnimatorWithIsBack:isBack];
+        [self systemTransitionAnimatorWithIsBack:isBack];
         return;
     }
     
     // 执行自定义动画方法
     unsigned int count = 0;
-//    NSString *rangeStr = isBack ? @"transitionBackSystemAnimation" : @"transitionNextSystemAnimation";
-    NSString *rangeStr = @"AnimatorWithIsBack";
+    NSString *rangeStr = @"customTransitionAnimator";
     Method *methodlist = class_copyMethodList(NSClassFromString(@"TransitionAnimator"), &count);
     int tag = 0;
     
@@ -138,13 +144,28 @@
 
 
 #pragma mark - 自定义动画方法
-- (void)transitionPageAnimatorWithIsBack:(BOOL)isBack
+- (void)customTransitionAnimatorWithPageToLeft
 {
     if (!isBack) {
-        [self transitionNextPageAnimatorWithTransitionContext:_transitionContext];
+        [self transitionNextPageAnimator];
     }else {
-        [self transitionBackPageAnimatorWithTransitionContext:_transitionContext];
+        [self transitionBackPageAnimator];
     }
+}
+
+- (void)customTransitionAnimatorWithPageToRight
+{
+    [self customTransitionAnimatorWithPageToLeft];
+}
+
+- (void)customTransitionAnimatorWithPageToTop
+{
+    [self customTransitionAnimatorWithPageToLeft];
+}
+
+- (void)customTransitionAnimatorWithPageToBottom
+{
+    [self customTransitionAnimatorWithPageToLeft];
 }
 
 
