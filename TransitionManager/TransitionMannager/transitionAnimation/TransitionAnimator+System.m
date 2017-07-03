@@ -6,11 +6,11 @@
 //  Copyright © 2017年 xiaolong. All rights reserved.
 //
 
-#import "TransitionAnimator+SystemAnimation.h"
+#import "TransitionAnimator+System.h"
 #import "TransitionAnimator+SystemType.h"
 
 
-@implementation TransitionAnimator (SystemAnimation)
+@implementation TransitionAnimator (System)
 
 - (void)systemTransitionAnimatorWithIsBack:(BOOL)isBack
 {

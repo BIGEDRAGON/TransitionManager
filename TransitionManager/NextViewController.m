@@ -14,15 +14,26 @@
 
 @implementation NextViewController
 
+-(UIImageView *)imageV{
+    if (!_imageV) {
+        _imageV = [[UIImageView alloc] init];
+        CGSize size = [UIScreen mainScreen].bounds.size;
+        _imageV.frame = CGRectMake((size.width-130)/2, (size.height+64-200)/2, 130, 200);
+        _imageV.image = [UIImage imageNamed:@"basil"];
+    }
+    return _imageV;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.title = @"nextVC";
     self.view.backgroundColor = [UIColor orangeColor];
     
+    CGSize size = [UIScreen mainScreen].bounds.size;
     
     UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn1.frame = CGRectMake(150, 200, 100, 50);
+    btn1.frame = CGRectMake((size.width-200)/2-20, 14+(size.height-64-200)/2, 100, 50);
     [btn1 setTitle:@"pop" forState:UIControlStateNormal];
     [btn1 setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [self.view addSubview:btn1];
@@ -31,12 +42,14 @@
     
     
     UIButton *btn2 = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn2.frame = CGRectMake(150, 400, 100, 50);
+    btn2.frame = CGRectMake(size.width/2, 14+(size.height-64-200)/2, 100, 50);
     [btn2 setTitle:@"dismiss" forState:UIControlStateNormal];
     [btn2 setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [self.view addSubview:btn2];
     
     [btn2 addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:self.imageV];
 }
 
 

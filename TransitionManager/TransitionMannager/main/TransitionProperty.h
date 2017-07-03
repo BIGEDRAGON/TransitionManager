@@ -70,10 +70,10 @@
 /**
  * 起始视图
  */
-//@property (nonatomic, strong) UIView *startView;
+@property (nonatomic, strong) UIView *startView;
 /**
  * 结束视图
  */
-//@property (nonatomic, strong) UIView *endView;
+@property (nonatomic, strong) UIView *endView;
 
 @end

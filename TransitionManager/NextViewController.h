@@ -10,4 +10,6 @@
 
 @interface NextViewController : UIViewController
 
+@property (nonatomic, strong) UIImageView *imageV;
+
 @end

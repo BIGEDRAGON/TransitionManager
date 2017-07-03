@@ -9,6 +9,7 @@
 #import "TableViewController.h"
 #import "TransitionManager.h"
 #import "NextViewController.h"
+#import "PartViewViewController.h"
 
 static NSString *identifier = @"SystemTableViewController";
 
@@ -53,8 +54,8 @@ static NSString *identifier = @"SystemTableViewController";
 - (NSArray *)customArr
 {
     if (!_customArr) {
-        _customArr = @[@"PageToLeft",@"PageToRight",@"PageToTop",@"PageToBottom",
-                       ];
+        _customArr = @[@"ViewNormalMove",@"ViewSpringMode",
+                       @"PageToLeft",@"PageToRight",@"PageToTop",@"PageToBottom",];
     }
     return _customArr;
 }
@@ -101,6 +102,15 @@ static NSString *identifier = @"SystemTableViewController";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (!_isSystem && (indexPath.row == 0 || indexPath.row == 1)) {
+        PartViewViewController *vc = [[PartViewViewController alloc] init];
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        vc.titleStr = cell.textLabel.text;
+        vc.isPush = _isPush;
+        [self.navigationController pushViewController:vc animated:YES];
+        return;
+    }
     
     if (_isPush) {
         

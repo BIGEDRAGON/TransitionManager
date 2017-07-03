@@ -10,8 +10,9 @@
 #import <objc/runtime.h>
 #import <objc/message.h>
 #import "TransitionAnimator.h"
-#import "TransitionAnimator+SystemAnimation.h"
-#import "TransitionAnimator+PageAnimation.h"
+#import "TransitionAnimator+System.h"
+#import "TransitionAnimator+ViewMove.h"
+#import "TransitionAnimator+Page.h"
 
 @interface TransitionAnimator ()<CAAnimationDelegate>
 {
@@ -119,14 +120,15 @@
     // 执行自定义动画方法
     unsigned int count = 0;
     NSString *rangeStr = @"customTransitionAnimator";
-    Method *methodlist = class_copyMethodList(NSClassFromString(@"TransitionAnimator"), &count);
-    int tag = 0;
+    Method *methodlist = class_copyMethodList([TransitionAnimator class], &count);
     
+    int tag = 0;
     for (int i = 0; i < count; i++) {
         
         Method method = methodlist[i];
         SEL selector = method_getName(method);
         NSString *methodName = NSStringFromSelector(selector);
+        NSLog(@"第%d个 ： %@", i, methodName);
         
         if ([methodName rangeOfString:rangeStr].location != NSNotFound) {
             tag++;
@@ -134,7 +136,8 @@
             if (tag == _transitionProperty.animationType-TransitionAnimationTypeDefault) {
                 
                 // 发送消息，即调用对应的方法
-                ((void (*)(id,SEL,BOOL))objc_msgSend)(self,selector,isBack);
+                ((void (*)(id,SEL))objc_msgSend)(self,selector);
+//                ((void (*)(id,SEL,BOOL))objc_msgSend)(self,selector,isBack);
                 break;
             }
         }
@@ -143,29 +146,38 @@
 }
 
 
-#pragma mark - 自定义动画方法
+#pragma mark - 自定义动画方法(方法名必须包含customTransitionAnimator)
+
+#pragma mark ViewMove
+- (void)customTransitionAnimatorWithViewNormalMove
+{
+    [self transitionAnimatorViewMoveWithIsBack:isBack];
+}
+
+- (void)customTransitionAnimatorWithViewSpringMove
+{
+    [self transitionAnimatorViewMoveWithIsBack:isBack];
+}
+
+#pragma mark Page
 - (void)customTransitionAnimatorWithPageToLeft
 {
-    if (!isBack) {
-        [self transitionNextPageAnimator];
-    }else {
-        [self transitionBackPageAnimator];
-    }
+    [self transitionAnimatorPageWithIsBack:isBack];
 }
 
 - (void)customTransitionAnimatorWithPageToRight
 {
-    [self customTransitionAnimatorWithPageToLeft];
+    [self transitionAnimatorPageWithIsBack:isBack];
 }
 
 - (void)customTransitionAnimatorWithPageToTop
 {
-    [self customTransitionAnimatorWithPageToLeft];
+    [self transitionAnimatorPageWithIsBack:isBack];
 }
 
 - (void)customTransitionAnimatorWithPageToBottom
 {
-    [self customTransitionAnimatorWithPageToLeft];
+    [self transitionAnimatorPageWithIsBack:isBack];
 }
 
 

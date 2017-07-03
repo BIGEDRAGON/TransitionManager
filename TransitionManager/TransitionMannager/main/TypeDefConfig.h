@@ -58,7 +58,10 @@ typedef NS_ENUM(NSInteger, TransitionAnimationType){
     TransitionAnimationTypeSysCameraIrisHollowClose,//关镜头
     
     /*************** 自定义 ***************/
-    TransitionAnimationTypeDefault,
+    TransitionAnimationTypeDefault,// TransitionAnimationTypeSysPushFromLeft
+    
+    TransitionAnimationTypeViewNormalMove,// view移动转场
+    TransitionAnimationTypeViewSpringMove,// view移动(带缓冲)转场
     
     TransitionAnimationTypePageTransitionToLeft,// 左翻页
     TransitionAnimationTypePageTransitionToRight,// 右翻页

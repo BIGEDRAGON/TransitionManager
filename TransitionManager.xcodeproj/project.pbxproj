@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F9307F881F062874000C2203 /* PartViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9307F871F062874000C2203 /* PartViewViewController.m */; };
+		F9307F8E1F062A75000C2203 /* TransitionAnimator+ViewMove.m in Sources */ = {isa = PBXBuildFile; fileRef = F9307F8D1F062A75000C2203 /* TransitionAnimator+ViewMove.m */; };
+		F9307F911F07E2FA000C2203 /* TransitionAnimator+Page.m in Sources */ = {isa = PBXBuildFile; fileRef = F9307F901F07E2FA000C2203 /* TransitionAnimator+Page.m */; };
 		F9383CB31EF79F36008CA788 /* SwizzleMethodTool.m in Sources */ = {isa = PBXBuildFile; fileRef = F9383CA61EF79F36008CA788 /* SwizzleMethodTool.m */; };
 		F9383CB41EF79F36008CA788 /* TransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = F9383CA81EF79F36008CA788 /* TransitionAnimator.m */; };
 		F9383CB51EF79F36008CA788 /* TransitionProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = F9383CAB1EF79F36008CA788 /* TransitionProperty.m */; };
@@ -20,14 +23,19 @@
 		F93A08E11EF11D4700B93ED1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F93A08DF1EF11D4700B93ED1 /* Main.storyboard */; };
 		F93A08E31EF11D4700B93ED1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F93A08E21EF11D4700B93ED1 /* Assets.xcassets */; };
 		F93A08E61EF11D4700B93ED1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F93A08E41EF11D4700B93ED1 /* LaunchScreen.storyboard */; };
-		F93A09341EF2546300B93ED1 /* TransitionAnimator+SystemAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F93A09331EF2546300B93ED1 /* TransitionAnimator+SystemAnimation.m */; };
+		F93A09341EF2546300B93ED1 /* TransitionAnimator+System.m in Sources */ = {isa = PBXBuildFile; fileRef = F93A09331EF2546300B93ED1 /* TransitionAnimator+System.m */; };
 		F93A093A1EF27D1300B93ED1 /* TransitionAnimator+SystemType.m in Sources */ = {isa = PBXBuildFile; fileRef = F93A09391EF27D1300B93ED1 /* TransitionAnimator+SystemType.m */; };
-		F93A093D1EF360CD00B93ED1 /* TransitionAnimator+PageAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F93A093C1EF360CD00B93ED1 /* TransitionAnimator+PageAnimation.m */; };
 		F9F492281EF36B29009A7620 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F492271EF36B29009A7620 /* TableViewController.m */; };
 		F9F4922E1EF36F26009A7620 /* NextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F4922D1EF36F26009A7620 /* NextViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F9307F861F062874000C2203 /* PartViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartViewViewController.h; sourceTree = "<group>"; };
+		F9307F871F062874000C2203 /* PartViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PartViewViewController.m; sourceTree = "<group>"; };
+		F9307F8C1F062A75000C2203 /* TransitionAnimator+ViewMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TransitionAnimator+ViewMove.h"; sourceTree = "<group>"; };
+		F9307F8D1F062A75000C2203 /* TransitionAnimator+ViewMove.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TransitionAnimator+ViewMove.m"; sourceTree = "<group>"; };
+		F9307F8F1F07E2FA000C2203 /* TransitionAnimator+Page.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TransitionAnimator+Page.h"; sourceTree = "<group>"; };
+		F9307F901F07E2FA000C2203 /* TransitionAnimator+Page.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TransitionAnimator+Page.m"; sourceTree = "<group>"; };
 		F9383CA51EF79F36008CA788 /* SwizzleMethodTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwizzleMethodTool.h; sourceTree = "<group>"; };
 		F9383CA61EF79F36008CA788 /* SwizzleMethodTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwizzleMethodTool.m; sourceTree = "<group>"; };
 		F9383CA71EF79F36008CA788 /* TransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionAnimator.h; sourceTree = "<group>"; };
@@ -55,12 +63,10 @@
 		F93A08E51EF11D4700B93ED1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F93A08E71EF11D4700B93ED1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F93A09271EF12ED600B93ED1 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
-		F93A09321EF2546300B93ED1 /* TransitionAnimator+SystemAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TransitionAnimator+SystemAnimation.h"; sourceTree = "<group>"; };
-		F93A09331EF2546300B93ED1 /* TransitionAnimator+SystemAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TransitionAnimator+SystemAnimation.m"; sourceTree = "<group>"; };
+		F93A09321EF2546300B93ED1 /* TransitionAnimator+System.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TransitionAnimator+System.h"; sourceTree = "<group>"; };
+		F93A09331EF2546300B93ED1 /* TransitionAnimator+System.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TransitionAnimator+System.m"; sourceTree = "<group>"; };
 		F93A09381EF27D1300B93ED1 /* TransitionAnimator+SystemType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TransitionAnimator+SystemType.h"; sourceTree = "<group>"; };
 		F93A09391EF27D1300B93ED1 /* TransitionAnimator+SystemType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TransitionAnimator+SystemType.m"; sourceTree = "<group>"; };
-		F93A093B1EF360CD00B93ED1 /* TransitionAnimator+PageAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TransitionAnimator+PageAnimation.h"; sourceTree = "<group>"; };
-		F93A093C1EF360CD00B93ED1 /* TransitionAnimator+PageAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TransitionAnimator+PageAnimation.m"; sourceTree = "<group>"; };
 		F9F492261EF36B29009A7620 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		F9F492271EF36B29009A7620 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		F9F4922C1EF36F26009A7620 /* NextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NextViewController.h; sourceTree = "<group>"; };
@@ -107,6 +113,8 @@
 				F9F492271EF36B29009A7620 /* TableViewController.m */,
 				F9F4922C1EF36F26009A7620 /* NextViewController.h */,
 				F9F4922D1EF36F26009A7620 /* NextViewController.m */,
+				F9307F861F062874000C2203 /* PartViewViewController.h */,
+				F9307F871F062874000C2203 /* PartViewViewController.m */,
 				F93A08DF1EF11D4700B93ED1 /* Main.storyboard */,
 				F93A08E21EF11D4700B93ED1 /* Assets.xcassets */,
 				F93A08E41EF11D4700B93ED1 /* LaunchScreen.storyboard */,
@@ -169,10 +177,12 @@
 			children = (
 				F93A09381EF27D1300B93ED1 /* TransitionAnimator+SystemType.h */,
 				F93A09391EF27D1300B93ED1 /* TransitionAnimator+SystemType.m */,
-				F93A09321EF2546300B93ED1 /* TransitionAnimator+SystemAnimation.h */,
-				F93A09331EF2546300B93ED1 /* TransitionAnimator+SystemAnimation.m */,
-				F93A093B1EF360CD00B93ED1 /* TransitionAnimator+PageAnimation.h */,
-				F93A093C1EF360CD00B93ED1 /* TransitionAnimator+PageAnimation.m */,
+				F93A09321EF2546300B93ED1 /* TransitionAnimator+System.h */,
+				F93A09331EF2546300B93ED1 /* TransitionAnimator+System.m */,
+				F9307F8C1F062A75000C2203 /* TransitionAnimator+ViewMove.h */,
+				F9307F8D1F062A75000C2203 /* TransitionAnimator+ViewMove.m */,
+				F9307F8F1F07E2FA000C2203 /* TransitionAnimator+Page.h */,
+				F9307F901F07E2FA000C2203 /* TransitionAnimator+Page.m */,
 			);
 			path = transitionAnimation;
 			sourceTree = "<group>";
@@ -250,19 +260,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9F492281EF36B29009A7620 /* TableViewController.m in Sources */,
+				F9307F911F07E2FA000C2203 /* TransitionAnimator+Page.m in Sources */,
 				F9383CB31EF79F36008CA788 /* SwizzleMethodTool.m in Sources */,
 				F9383D731EF90BE1008CA788 /* CustomDelegate.m in Sources */,
 				F93A093A1EF27D1300B93ED1 /* TransitionAnimator+SystemType.m in Sources */,
+				F9307F881F062874000C2203 /* PartViewViewController.m in Sources */,
 				F9383CB41EF79F36008CA788 /* TransitionAnimator.m in Sources */,
 				F93A08DE1EF11D4700B93ED1 /* ViewController.m in Sources */,
-				F93A093D1EF360CD00B93ED1 /* TransitionAnimator+PageAnimation.m in Sources */,
 				F9383D791EFA12D4008CA788 /* PercentInteractive.m in Sources */,
+				F9307F8E1F062A75000C2203 /* TransitionAnimator+ViewMove.m in Sources */,
 				F93A08DB1EF11D4700B93ED1 /* AppDelegate.m in Sources */,
 				F9383CB51EF79F36008CA788 /* TransitionProperty.m in Sources */,
 				F9383CB61EF79F36008CA788 /* UINavigationController+Transition.m in Sources */,
 				F93A08D81EF11D4700B93ED1 /* main.m in Sources */,
 				F9F4922E1EF36F26009A7620 /* NextViewController.m in Sources */,
-				F93A09341EF2546300B93ED1 /* TransitionAnimator+SystemAnimation.m in Sources */,
+				F93A09341EF2546300B93ED1 /* TransitionAnimator+System.m in Sources */,
 				F9383CB71EF79F36008CA788 /* UIViewController+Transition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

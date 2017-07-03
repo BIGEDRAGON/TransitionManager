@@ -8,7 +8,7 @@
 
 #import "TransitionAnimator.h"
 
-@interface TransitionAnimator (SystemAnimation)
+@interface TransitionAnimator (System)
 
 - (void)systemTransitionAnimatorWithIsBack:(BOOL)isBack;
 

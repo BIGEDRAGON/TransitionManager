@@ -1,14 +1,24 @@
 //
-//  TransitionAnimation+PageAnimation.m
+//  TransitionAnimator+Page.m
 //  TransitionManager
 //
-//  Created by long on 2017/6/16.
+//  Created by long on 2017/7/1.
 //  Copyright © 2017年 xiaolong. All rights reserved.
 //
 
-#import "TransitionAnimator+PageAnimation.h"
+#import "TransitionAnimator+Page.h"
 
-@implementation TransitionAnimator (PageAnimation)
+@implementation TransitionAnimator (Page)
+
+- (void)transitionAnimatorPageWithIsBack:(BOOL)isBack
+{
+    if (!isBack) {
+        [self transitionNextPageAnimator];
+    }else {
+        [self transitionBackPageAnimator];
+    }
+}
+
 
 - (void)transitionNextPageAnimator
 {
