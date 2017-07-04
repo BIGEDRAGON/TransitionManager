@@ -38,19 +38,19 @@
     CATransform3D finalTransfrom3d = CATransform3DIdentity;
     
     switch (self.transitionProperty.animationType) {
-        case TransitionAnimationTypePageTransitionToLeft:
+        case TransitionAnimationTypePageToLeft:
             anchorPoint = CGPointMake(0, 0.5);
             finalTransfrom3d = CATransform3DMakeRotation(-M_PI_2, 0, 1, 0);
             break;
-        case TransitionAnimationTypePageTransitionToRight:
+        case TransitionAnimationTypePageToRight:
             anchorPoint = CGPointMake(1, 0.5);
             finalTransfrom3d = CATransform3DMakeRotation(M_PI_2, 0, 1, 0);
             break;
-        case TransitionAnimationTypePageTransitionToTop:
+        case TransitionAnimationTypePageToTop:
             anchorPoint = CGPointMake(0.5, 0);
             finalTransfrom3d = CATransform3DMakeRotation(M_PI_2, 1, 0, 0);
             break;
-        case TransitionAnimationTypePageTransitionToBottom:
+        case TransitionAnimationTypePageToBottom:
             anchorPoint = CGPointMake(0.5, 1);
             finalTransfrom3d = CATransform3DMakeRotation(-M_PI_2, 1, 0, 0);
             break;

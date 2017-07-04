@@ -55,7 +55,12 @@ static NSString *identifier = @"SystemTableViewController";
 {
     if (!_customArr) {
         _customArr = @[@"ViewNormalMove",@"ViewSpringMode",
-                       @"PageToLeft",@"PageToRight",@"PageToTop",@"PageToBottom",];
+                       @"PageToLeft",@"PageToRight",@"PageToTop",@"PageToBottom",
+                       @"NormalOpenPortalVertical",@"NormalOpenPortalHorizontal",
+                       @"NormalClosePortalVertical",@"NormalClosePortalHorizontal",
+                       @"SolidOpenPortalVertical",@"SolidOpenPortalHorizontal",
+                       @"SolidClosePortalVertical",@"SolidClosePortalHorizontal"
+                       ];
     }
     return _customArr;
 }

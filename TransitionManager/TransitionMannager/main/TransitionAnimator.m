@@ -13,6 +13,7 @@
 #import "TransitionAnimator+System.h"
 #import "TransitionAnimator+ViewMove.h"
 #import "TransitionAnimator+Page.h"
+#import "TransitionAnimator+Portal.h"
 
 @interface TransitionAnimator ()<CAAnimationDelegate>
 {
@@ -178,6 +179,40 @@
 - (void)customTransitionAnimatorWithPageToBottom
 {
     [self transitionAnimatorPageWithIsBack:isBack];
+}
+
+#pragma mark Portal
+- (void)customTransitionAnimatorWithNormalOpenPortalVertical
+{
+    [self transitionAnimatorPortalWithIsBack:isBack];
+}
+- (void)customTransitionAnimatorWithNormalOpenPortalHorizontal
+{
+    [self transitionAnimatorPortalWithIsBack:isBack];
+}
+- (void)customTransitionAnimatorWithNormalClosePortalVertical
+{
+    [self transitionAnimatorPortalWithIsBack:isBack];
+}
+- (void)customTransitionAnimatorWithNormalClosePortalHorizontal
+{
+    [self transitionAnimatorPortalWithIsBack:isBack];
+}
+- (void)customTransitionAnimatorWithSolidOpenPortalVertical
+{
+    [self transitionAnimatorPortalWithIsBack:isBack];
+}
+- (void)customTransitionAnimatorWithSolidOpenPortalHorizontal
+{
+    [self transitionAnimatorPortalWithIsBack:isBack];
+}
+- (void)customTransitionAnimatorWithSolidClosePortalVertical
+{
+    [self transitionAnimatorPortalWithIsBack:isBack];
+}
+- (void)customTransitionAnimatorWithSolidClosePortalHorizontal
+{
+    [self transitionAnimatorPortalWithIsBack:isBack];
 }
 
 

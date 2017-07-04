@@ -39,7 +39,7 @@ typedef NS_ENUM(NSInteger, TransitionAnimationType){
     TransitionAnimationTypeSysOglFlipFromRight,
     TransitionAnimationTypeSysOglFlipFromLeft,
     TransitionAnimationTypeSysOglFlipFromTop,
-    TransitionAnimationTypeSysOglFlipFromBottom, //翻转
+    TransitionAnimationTypeSysOglFlipFromBottom,//翻转
     
     TransitionAnimationTypeSysRippleEffect,//波纹
     
@@ -53,8 +53,7 @@ typedef NS_ENUM(NSInteger, TransitionAnimationType){
     TransitionAnimationTypeSysPageUnCurlFromTop,
     TransitionAnimationTypeSysPageUnCurlFromBottom,//反翻页
     
-    TransitionAnimationTypeSysCameraIrisHollowOpen,//开镜头
-    
+    TransitionAnimationTypeSysCameraIrisHollowOpen, //开镜头
     TransitionAnimationTypeSysCameraIrisHollowClose,//关镜头
     
     /*************** 自定义 ***************/
@@ -63,10 +62,19 @@ typedef NS_ENUM(NSInteger, TransitionAnimationType){
     TransitionAnimationTypeViewNormalMove,// view移动转场
     TransitionAnimationTypeViewSpringMove,// view移动(带缓冲)转场
     
-    TransitionAnimationTypePageTransitionToLeft,// 左翻页
-    TransitionAnimationTypePageTransitionToRight,// 右翻页
-    TransitionAnimationTypePageTransitionToTop,// 上翻页
-    TransitionAnimationTypePageTransitionToBottom// 下翻页
+    TransitionAnimationTypePageToLeft,  // 左翻页
+    TransitionAnimationTypePageToRight, // 右翻页
+    TransitionAnimationTypePageToTop,   // 上翻页
+    TransitionAnimationTypePageToBottom,// 下翻页
+    
+    TransitionAnimationTypeNormalOpenPortalVertical,    // 垂直开门式
+    TransitionAnimationTypeNormalOpenPortalHorizontal,  // 水平开门式
+    TransitionAnimationTypeNormalClosePortalVertical,   // 垂直关门式
+    TransitionAnimationTypeNormalClosePortalHorizontal, // 水平关门式
+    TransitionAnimationTypeSolidOpenPortalVertical,     // 垂直开门式(立体)
+    TransitionAnimationTypeSolidOpenPortalHorizontal,   // 水平开门式(立体)
+    TransitionAnimationTypeSolidClosePortalVertical,    // 垂直关门式(立体)
+    TransitionAnimationTypeSolidClosePortalHorizontal,  // 水平关门式(立体)
 };
 
 typedef NS_ENUM(NSInteger,TransitionType){

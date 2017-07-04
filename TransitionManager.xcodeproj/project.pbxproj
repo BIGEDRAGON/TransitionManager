@@ -10,6 +10,7 @@
 		F9307F881F062874000C2203 /* PartViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9307F871F062874000C2203 /* PartViewViewController.m */; };
 		F9307F8E1F062A75000C2203 /* TransitionAnimator+ViewMove.m in Sources */ = {isa = PBXBuildFile; fileRef = F9307F8D1F062A75000C2203 /* TransitionAnimator+ViewMove.m */; };
 		F9307F911F07E2FA000C2203 /* TransitionAnimator+Page.m in Sources */ = {isa = PBXBuildFile; fileRef = F9307F901F07E2FA000C2203 /* TransitionAnimator+Page.m */; };
+		F9307F941F0A1A29000C2203 /* TransitionAnimator+Portal.m in Sources */ = {isa = PBXBuildFile; fileRef = F9307F931F0A1A29000C2203 /* TransitionAnimator+Portal.m */; };
 		F9383CB31EF79F36008CA788 /* SwizzleMethodTool.m in Sources */ = {isa = PBXBuildFile; fileRef = F9383CA61EF79F36008CA788 /* SwizzleMethodTool.m */; };
 		F9383CB41EF79F36008CA788 /* TransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = F9383CA81EF79F36008CA788 /* TransitionAnimator.m */; };
 		F9383CB51EF79F36008CA788 /* TransitionProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = F9383CAB1EF79F36008CA788 /* TransitionProperty.m */; };
@@ -36,6 +37,8 @@
 		F9307F8D1F062A75000C2203 /* TransitionAnimator+ViewMove.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TransitionAnimator+ViewMove.m"; sourceTree = "<group>"; };
 		F9307F8F1F07E2FA000C2203 /* TransitionAnimator+Page.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TransitionAnimator+Page.h"; sourceTree = "<group>"; };
 		F9307F901F07E2FA000C2203 /* TransitionAnimator+Page.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TransitionAnimator+Page.m"; sourceTree = "<group>"; };
+		F9307F921F0A1A29000C2203 /* TransitionAnimator+Portal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TransitionAnimator+Portal.h"; sourceTree = "<group>"; };
+		F9307F931F0A1A29000C2203 /* TransitionAnimator+Portal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TransitionAnimator+Portal.m"; sourceTree = "<group>"; };
 		F9383CA51EF79F36008CA788 /* SwizzleMethodTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwizzleMethodTool.h; sourceTree = "<group>"; };
 		F9383CA61EF79F36008CA788 /* SwizzleMethodTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwizzleMethodTool.m; sourceTree = "<group>"; };
 		F9383CA71EF79F36008CA788 /* TransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionAnimator.h; sourceTree = "<group>"; };
@@ -183,6 +186,8 @@
 				F9307F8D1F062A75000C2203 /* TransitionAnimator+ViewMove.m */,
 				F9307F8F1F07E2FA000C2203 /* TransitionAnimator+Page.h */,
 				F9307F901F07E2FA000C2203 /* TransitionAnimator+Page.m */,
+				F9307F921F0A1A29000C2203 /* TransitionAnimator+Portal.h */,
+				F9307F931F0A1A29000C2203 /* TransitionAnimator+Portal.m */,
 			);
 			path = transitionAnimation;
 			sourceTree = "<group>";
@@ -260,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9F492281EF36B29009A7620 /* TableViewController.m in Sources */,
+				F9307F941F0A1A29000C2203 /* TransitionAnimator+Portal.m in Sources */,
 				F9307F911F07E2FA000C2203 /* TransitionAnimator+Page.m in Sources */,
 				F9383CB31EF79F36008CA788 /* SwizzleMethodTool.m in Sources */,
 				F9383D731EF90BE1008CA788 /* CustomDelegate.m in Sources */,
