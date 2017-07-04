@@ -129,10 +129,10 @@
         Method method = methodlist[i];
         SEL selector = method_getName(method);
         NSString *methodName = NSStringFromSelector(selector);
-        NSLog(@"第%d个 ： %@", i, methodName);
         
         if ([methodName rangeOfString:rangeStr].location != NSNotFound) {
             tag++;
+            NSLog(@"第%d个customMethod ： %@", i, methodName);
             
             if (tag == _transitionProperty.animationType-TransitionAnimationTypeDefault) {
                 

@@ -63,6 +63,13 @@
         BeginAnimationBlock();
     }
     
+    // solid
+    if ([self animationTypeIsSolid] && !isBack && [self animationTypeIsOpen]) {
+        toView.layer.transform = CATransform3DMakeScale(0.6, 0.6, 1.0);
+    }else if([self animationTypeIsSolid] && isBack && ![self animationTypeIsOpen]) {
+        toView.layer.transform = CATransform3DMakeScale(0.6, 0.6, 1.0);
+    }
+    
     [UIView animateWithDuration:self.transitionProperty.animationTime animations:^{
         if ((![WeakSelf animationTypeIsOpen] && !isBack) ||
             ([WeakSelf animationTypeIsOpen] && isBack)) {
@@ -71,8 +78,33 @@
             BeginAnimationBlock();
         }
         
+        
+        // solid
+        if ([self animationTypeIsSolid] && !isBack) {
+            
+            // open and close (not isBack)
+            if ([self animationTypeIsOpen]) {
+                fromView.hidden = YES;
+                toView.layer.transform = CATransform3DIdentity;
+            }else {
+                fromView.layer.transform = CATransform3DMakeScale(0.6, 0.6, 1.0);
+            }
+            
+        }else if([self animationTypeIsSolid] && isBack) {
+            
+            // open and close (isBack)
+            if ([self animationTypeIsOpen]) {
+                fromView.layer.transform = CATransform3DMakeScale(0.6, 0.6, 1.0);
+            }else {
+                fromView.hidden = YES;
+                toView.layer.transform = CATransform3DIdentity;
+            }
+                
+        }
+        
     } completion:^(BOOL finished) {
         
+        fromView.hidden = NO;
         toView.hidden = NO;
         [imgView0 removeFromSuperview];
         [imgView1 removeFromSuperview];
@@ -87,6 +119,9 @@
         self.interactiveBlock = ^(BOOL sucess) {
             if (!sucess) {
                 [toView removeFromSuperview];
+            }else {
+                fromView.hidden = YES;
+                toView.hidden = NO;
             }
             [imgView0 removeFromSuperview];
             [imgView1 removeFromSuperview];
@@ -284,6 +319,20 @@
         case TransitionAnimationTypeSolidOpenPortalVertical:
         case TransitionAnimationTypeNormalClosePortalVertical:
         case TransitionAnimationTypeSolidClosePortalVertical:
+            return YES;
+            break;
+        default:
+            return NO;
+            break;
+    }
+}
+- (BOOL)animationTypeIsSolid
+{
+    switch (self.transitionProperty.animationType) {
+        case TransitionAnimationTypeSolidOpenPortalVertical:
+        case TransitionAnimationTypeSolidOpenPortalHorizontal:
+        case TransitionAnimationTypeSolidClosePortalVertical:
+        case TransitionAnimationTypeSolidClosePortalHorizontal:
             return YES;
             break;
         default:
