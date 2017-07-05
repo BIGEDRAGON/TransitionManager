@@ -57,18 +57,20 @@
     };
     
     
+    CATransform3D scaleTransForm3D = CATransform3DMakeScale(0.6, 0.6, 1.0);
+    
     if ((![self animationTypeIsOpen] && !isBack) ||
         ([self animationTypeIsOpen] && isBack)) {
         toView.hidden = YES;
         BeginAnimationBlock();
+    }else {
+        
+        // solid
+        if ([self animationTypeIsSolid]) {
+            toView.layer.transform = scaleTransForm3D;
+        }
     }
     
-    // solid
-    if ([self animationTypeIsSolid] && !isBack && [self animationTypeIsOpen]) {
-        toView.layer.transform = CATransform3DMakeScale(0.6, 0.6, 1.0);
-    }else if([self animationTypeIsSolid] && isBack && ![self animationTypeIsOpen]) {
-        toView.layer.transform = CATransform3DMakeScale(0.6, 0.6, 1.0);
-    }
     
     [UIView animateWithDuration:self.transitionProperty.animationTime animations:^{
         if ((![WeakSelf animationTypeIsOpen] && !isBack) ||
@@ -87,14 +89,14 @@
                 fromView.hidden = YES;
                 toView.layer.transform = CATransform3DIdentity;
             }else {
-                fromView.layer.transform = CATransform3DMakeScale(0.6, 0.6, 1.0);
+                fromView.layer.transform = scaleTransForm3D;
             }
             
         }else if([self animationTypeIsSolid] && isBack) {
             
             // open and close (isBack)
             if ([self animationTypeIsOpen]) {
-                fromView.layer.transform = CATransform3DMakeScale(0.6, 0.6, 1.0);
+                fromView.layer.transform = scaleTransForm3D;
             }else {
                 fromView.hidden = YES;
                 toView.layer.transform = CATransform3DIdentity;
@@ -120,8 +122,10 @@
             if (!sucess) {
                 [toView removeFromSuperview];
             }else {
-                fromView.hidden = YES;
                 toView.hidden = NO;
+                // 修复present/pop情况下，SolidClosePortal方式toView弹一下问题
+                // 原因是finishInteractive的时候，toView又刷新了一次动画
+                [toView.layer removeAllAnimations];
             }
             [imgView0 removeFromSuperview];
             [imgView1 removeFromSuperview];
