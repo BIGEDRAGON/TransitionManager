@@ -72,7 +72,7 @@ iOS 7 自定义ViewController动画切换有以下几种方式：
                       interactionControllerForAnimationController: (id <UIViewControllerAnimatedTransitioning>)animationController NS_AVAILABLE_IOS(7_0);
 		// animation代理
 		- (nullable id <UIViewControllerAnimatedTransitioning>)tabBarController:(UITabBarController *)tabBarController
-animationControllerForTransitionFromViewController:(UIViewController *)fromVC
+                      animationControllerForTransitionFromViewController:(UIViewController *)fromVC
                                               toViewController:(UIViewController *)toVC  NS_AVAILABLE_IOS(7_0);
 		```		
 	- Push 和 Pop
