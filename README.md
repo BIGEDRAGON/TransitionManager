@@ -39,11 +39,13 @@ iOS 7 自定义ViewController动画切换有以下几种方式：
 	
 4. 普通开关门效果
 
-        ![输入图片说明](https://git.oschina.net/uploads/images/2017/0706/135050_ded83643_657827.gif "在这里输入图片标题")
+	![](https://git.oschina.net/uploads/images/2017/0706/135050_ded83643_657827.gif "NormalPortal")
 	
 5. 立体开关门效果
 
-        ![](https://git.oschina.net/uploads/images/2017/0706/135111_0bf7a32e_657827.gif "在这里输入图片标题")
+	![](https://git.oschina.net/uploads/images/2017/0706/135111_0bf7a32e_657827.gif "SolidPortal")
+	
+6. 正在补充中 0_0
 
 
 ## 原理篇
