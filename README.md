@@ -27,23 +27,23 @@ iOS 7 自定义ViewController动画切换有以下几种方式：
 
 1. 系统动画系列（`Modal` 转场版）
 	
-	![](/Users/a002482/Desktop/Blog/system.gif)
+	![](https://git.oschina.net/uploads/images/2017/0706/114032_2ede1385_657827.gif "system")
 	
 2. 类似KeyNote的局部控件move动画
 
-	![](/Users/a002482/Desktop/Blog/viewMove.gif)
+	![](https://git.oschina.net/uploads/images/2017/0706/134824_9e3690f8_657827.gif "ViewMove")
 	
 3. 翻页效果
 
-	![](/Users/a002482/Desktop/Blog/Page.gif)
+	![](https://git.oschina.net/uploads/images/2017/0706/114113_85602f8a_657827.gif "Page")
 	
 4. 普通开关门效果
 
-	![](/Users/a002482/Desktop/Blog/NormalPortal.gif)
+        ![](https://git.oschina.net/uploads/images/2017/0706/114124_b26e779a_657827.gif "NormalPortal")
 	
 5. 立体开关门效果
 
-	![](/Users/a002482/Desktop/Blog/SolidPortal.gif)
+        ![](https://git.oschina.net/uploads/images/2017/0706/134013_3c0ac2ad_657827.gif "SolidPortal")
 
 
 ## 原理篇
