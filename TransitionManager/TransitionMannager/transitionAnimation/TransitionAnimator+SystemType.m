@@ -8,7 +8,21 @@
 
 #import "TransitionAnimator+SystemType.h"
 
+@interface TransitionAnimator ()<CAAnimationDelegate>
+
+@end
+
 @implementation TransitionAnimator (SystemType)
+
+#pragma mark - <CAAnimationDelegate>
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+    if (flag) {
+        self.animationBlock ? self.animationBlock() : nil;
+        self.animationBlock = nil;
+    }
+}
+
 
 #pragma mark - systemTransition
 

@@ -110,11 +110,7 @@
         toView.hidden = NO;
         [imgView0 removeFromSuperview];
         [imgView1 removeFromSuperview];
-        if ([WeakSelf.transitionContext transitionWasCancelled]) {
-            [WeakSelf.transitionContext completeTransition:NO];
-        }else {
-            [WeakSelf.transitionContext completeTransition:YES];
-        }
+        [self.transitionContext completeTransition:![self.transitionContext transitionWasCancelled]];
     }];
     
     if (isBack) {

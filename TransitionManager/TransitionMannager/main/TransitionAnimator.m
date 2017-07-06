@@ -15,7 +15,7 @@
 #import "TransitionAnimator+Page.h"
 #import "TransitionAnimator+Portal.h"
 
-@interface TransitionAnimator ()<CAAnimationDelegate>
+@interface TransitionAnimator ()
 {
     BOOL isBack;
 }
@@ -95,16 +95,6 @@
                 removeDelegateBlock();
                 break;
         }
-    }
-}
-
-
-#pragma mark - <CAAnimationDelegate>
-- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
-{
-    if (flag) {
-        self.animationBlock ? self.animationBlock() : nil;
-        self.animationBlock = nil;
     }
 }
 

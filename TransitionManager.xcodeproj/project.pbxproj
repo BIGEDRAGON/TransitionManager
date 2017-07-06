@@ -24,8 +24,8 @@
 		F93A08E11EF11D4700B93ED1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F93A08DF1EF11D4700B93ED1 /* Main.storyboard */; };
 		F93A08E31EF11D4700B93ED1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F93A08E21EF11D4700B93ED1 /* Assets.xcassets */; };
 		F93A08E61EF11D4700B93ED1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F93A08E41EF11D4700B93ED1 /* LaunchScreen.storyboard */; };
-		F93A09341EF2546300B93ED1 /* TransitionAnimator+System.m in Sources */ = {isa = PBXBuildFile; fileRef = F93A09331EF2546300B93ED1 /* TransitionAnimator+System.m */; };
-		F93A093A1EF27D1300B93ED1 /* TransitionAnimator+SystemType.m in Sources */ = {isa = PBXBuildFile; fileRef = F93A09391EF27D1300B93ED1 /* TransitionAnimator+SystemType.m */; };
+		F96D87801F0C8877004833DD /* TransitionAnimator+System.m in Sources */ = {isa = PBXBuildFile; fileRef = F96D877D1F0C8877004833DD /* TransitionAnimator+System.m */; };
+		F96D87811F0C8877004833DD /* TransitionAnimator+SystemType.m in Sources */ = {isa = PBXBuildFile; fileRef = F96D877F1F0C8877004833DD /* TransitionAnimator+SystemType.m */; };
 		F9F492281EF36B29009A7620 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F492271EF36B29009A7620 /* TableViewController.m */; };
 		F9F4922E1EF36F26009A7620 /* NextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F4922D1EF36F26009A7620 /* NextViewController.m */; };
 /* End PBXBuildFile section */
@@ -66,10 +66,10 @@
 		F93A08E51EF11D4700B93ED1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F93A08E71EF11D4700B93ED1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F93A09271EF12ED600B93ED1 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
-		F93A09321EF2546300B93ED1 /* TransitionAnimator+System.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TransitionAnimator+System.h"; sourceTree = "<group>"; };
-		F93A09331EF2546300B93ED1 /* TransitionAnimator+System.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TransitionAnimator+System.m"; sourceTree = "<group>"; };
-		F93A09381EF27D1300B93ED1 /* TransitionAnimator+SystemType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TransitionAnimator+SystemType.h"; sourceTree = "<group>"; };
-		F93A09391EF27D1300B93ED1 /* TransitionAnimator+SystemType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TransitionAnimator+SystemType.m"; sourceTree = "<group>"; };
+		F96D877C1F0C8877004833DD /* TransitionAnimator+System.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TransitionAnimator+System.h"; sourceTree = "<group>"; };
+		F96D877D1F0C8877004833DD /* TransitionAnimator+System.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TransitionAnimator+System.m"; sourceTree = "<group>"; };
+		F96D877E1F0C8877004833DD /* TransitionAnimator+SystemType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TransitionAnimator+SystemType.h"; sourceTree = "<group>"; };
+		F96D877F1F0C8877004833DD /* TransitionAnimator+SystemType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TransitionAnimator+SystemType.m"; sourceTree = "<group>"; };
 		F9F492261EF36B29009A7620 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		F9F492271EF36B29009A7620 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		F9F4922C1EF36F26009A7620 /* NextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NextViewController.h; sourceTree = "<group>"; };
@@ -178,10 +178,10 @@
 		F93A09311EF2540200B93ED1 /* transitionAnimation */ = {
 			isa = PBXGroup;
 			children = (
-				F93A09381EF27D1300B93ED1 /* TransitionAnimator+SystemType.h */,
-				F93A09391EF27D1300B93ED1 /* TransitionAnimator+SystemType.m */,
-				F93A09321EF2546300B93ED1 /* TransitionAnimator+System.h */,
-				F93A09331EF2546300B93ED1 /* TransitionAnimator+System.m */,
+				F96D877E1F0C8877004833DD /* TransitionAnimator+SystemType.h */,
+				F96D877F1F0C8877004833DD /* TransitionAnimator+SystemType.m */,
+				F96D877C1F0C8877004833DD /* TransitionAnimator+System.h */,
+				F96D877D1F0C8877004833DD /* TransitionAnimator+System.m */,
 				F9307F8C1F062A75000C2203 /* TransitionAnimator+ViewMove.h */,
 				F9307F8D1F062A75000C2203 /* TransitionAnimator+ViewMove.m */,
 				F9307F8F1F07E2FA000C2203 /* TransitionAnimator+Page.h */,
@@ -269,7 +269,6 @@
 				F9307F911F07E2FA000C2203 /* TransitionAnimator+Page.m in Sources */,
 				F9383CB31EF79F36008CA788 /* SwizzleMethodTool.m in Sources */,
 				F9383D731EF90BE1008CA788 /* CustomDelegate.m in Sources */,
-				F93A093A1EF27D1300B93ED1 /* TransitionAnimator+SystemType.m in Sources */,
 				F9307F881F062874000C2203 /* PartViewViewController.m in Sources */,
 				F9383CB41EF79F36008CA788 /* TransitionAnimator.m in Sources */,
 				F93A08DE1EF11D4700B93ED1 /* ViewController.m in Sources */,
@@ -278,9 +277,10 @@
 				F93A08DB1EF11D4700B93ED1 /* AppDelegate.m in Sources */,
 				F9383CB51EF79F36008CA788 /* TransitionProperty.m in Sources */,
 				F9383CB61EF79F36008CA788 /* UINavigationController+Transition.m in Sources */,
+				F96D87811F0C8877004833DD /* TransitionAnimator+SystemType.m in Sources */,
 				F93A08D81EF11D4700B93ED1 /* main.m in Sources */,
 				F9F4922E1EF36F26009A7620 /* NextViewController.m in Sources */,
-				F93A09341EF2546300B93ED1 /* TransitionAnimator+System.m in Sources */,
+				F96D87801F0C8877004833DD /* TransitionAnimator+System.m in Sources */,
 				F9383CB71EF79F36008CA788 /* UIViewController+Transition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
