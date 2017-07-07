@@ -9,6 +9,7 @@
 #import "PartViewViewController.h"
 #import "TransitionManager.h"
 #import "NextViewController.h"
+#import "TransitionAnimatorViewMove.h"
 
 @interface PartViewViewController ()
 
@@ -55,31 +56,40 @@
 - (void)imageViewClick:(UITapGestureRecognizer *)tap
 {
     NextViewController *vc = [[NextViewController alloc] init];
-    TransitionAnimationType type = TransitionAnimationTypeDefault;
+    ViewMoveType viewMoveType;
     if ([_titleStr containsString:@"Normal"]) {
-        type = TransitionAnimationTypeViewNormalMove;
+        viewMoveType = ViewMoveTypeViewNormalMove;
     }else {
-        type = TransitionAnimationTypeViewSpringMove;
+        viewMoveType = ViewMoveTypeViewSpringMove;
     }
     
     __weak NextViewController *weakVC = vc;
     if (_isPush) {
         
         [self.navigationController lj_pushViewController:vc transition:^(TransitionProperty *property) {
-            property.animationType = type;
+            
             property.backGestureType = BackGestureTypeLeft | BackGestureTypeRight;
-            property.startView = tap.view;
-            property.endView = weakVC.imageV;
+            
+            // 设置了customAnimator，此时animationType设置无效
+//            property.animationType = TransitionAnimationTypeDefault;
+            
+            TransitionAnimatorViewMove *viewmove = [[TransitionAnimatorViewMove alloc] init];
+            viewmove.viewMoveType = viewMoveType;
+            viewmove.startView = tap.view;
+            viewmove.endView = weakVC.imageV;
+            property.customAnimator = viewmove;
         }];
     }else {
         
         [self.navigationController lj_presentViewController:vc transition:^(TransitionProperty *property) {
             property.animationTime = 0.5;
-            property.animationType = type;
-            property.backAnimationType = type;
             property.backGestureType = BackGestureTypeDown;
-            property.startView = tap.view;
-            property.endView = weakVC.imageV;
+            
+            TransitionAnimatorViewMove *viewmove = [[TransitionAnimatorViewMove alloc] init];
+            viewmove.viewMoveType = viewMoveType;
+            viewmove.startView = tap.view;
+            viewmove.endView = weakVC.imageV;
+            property.customAnimator = viewmove;
         } completion:nil];
     }
 }

@@ -59,9 +59,6 @@ typedef NS_ENUM(NSInteger, TransitionAnimationType){
     /*************** 自定义 ***************/
     TransitionAnimationTypeDefault,// TransitionAnimationTypeSysPushFromLeft
     
-    TransitionAnimationTypeViewNormalMove,// view移动转场
-    TransitionAnimationTypeViewSpringMove,// view移动(带缓冲)转场
-    
     TransitionAnimationTypePageToLeft,  // 左翻页
     TransitionAnimationTypePageToRight, // 右翻页
     TransitionAnimationTypePageToTop,   // 上翻页

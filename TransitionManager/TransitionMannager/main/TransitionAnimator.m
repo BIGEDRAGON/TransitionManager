@@ -11,7 +11,6 @@
 #import <objc/message.h>
 #import "TransitionAnimator.h"
 #import "TransitionAnimator+System.h"
-#import "TransitionAnimator+ViewMove.h"
 #import "TransitionAnimator+Page.h"
 #import "TransitionAnimator+Portal.h"
 
@@ -100,6 +99,7 @@
 
 
 #pragma mark - 执行动画方法
+#pragma mark 自定义动画方法一（子类式）：（子类重写本方法）
 - (void)transitionAnimationWithIsBack:(BOOL)isBack
 {
     [self transitionAnimation];
@@ -141,18 +141,7 @@
 }
 
 
-#pragma mark - 自定义动画方法(方法名必须包含customTransitionAnimator)
-
-#pragma mark ViewMove
-- (void)customTransitionAnimatorWithViewNormalMove
-{
-    [self transitionAnimatorViewMoveWithIsBack:isBack];
-}
-
-- (void)customTransitionAnimatorWithViewSpringMove
-{
-    [self transitionAnimatorViewMoveWithIsBack:isBack];
-}
+#pragma mark - 自定义动画方法二（分类式，麻烦）：(方法名必须包含customTransitionAnimator)
 
 #pragma mark Page
 - (void)customTransitionAnimatorWithPageToLeft

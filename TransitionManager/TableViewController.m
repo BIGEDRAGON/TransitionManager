@@ -17,6 +17,7 @@ static NSString *identifier = @"SystemTableViewController";
 @property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic, strong) NSArray *systemArr;
 @property (nonatomic, strong) NSArray *customArr;
+@property (nonatomic, strong) NSArray *subclassArr;
 @end
 
 @implementation TableViewController
@@ -54,8 +55,7 @@ static NSString *identifier = @"SystemTableViewController";
 - (NSArray *)customArr
 {
     if (!_customArr) {
-        _customArr = @[@"ViewNormalMove",@"ViewSpringMove",
-                       @"PageToLeft",@"PageToRight",@"PageToTop",@"PageToBottom",
+        _customArr = @[@"PageToLeft",@"PageToRight",@"PageToTop",@"PageToBottom",
                        @"NormalOpenPortalVertical",@"NormalOpenPortalHorizontal",
                        @"NormalClosePortalVertical",@"NormalClosePortalHorizontal",
                        @"SolidOpenPortalVertical",@"SolidOpenPortalHorizontal",
@@ -65,10 +65,29 @@ static NSString *identifier = @"SystemTableViewController";
     return _customArr;
 }
 
+- (NSArray *)subclassArr
+{
+    if (!_subclassArr) {
+        _subclassArr = @[@"ViewNormalMove",@"ViewSpringMove"];
+    }
+    return _subclassArr;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = _isSystem ? @"system" : @"custom";
+    switch (_type) {
+        case TypeSystem:
+            self.title = @"system";
+            break;
+        case TypeCustom_category:
+            self.title = @"custom(category)";
+            break;
+        case TypeCustom_subClass:
+            self.title = @"custom(subClass)";
+            break;
+    }
+    
     [self.view addSubview:self.myTableView];
     self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
 }
@@ -83,7 +102,17 @@ static NSString *identifier = @"SystemTableViewController";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _isSystem ? self.systemArr.count : self.customArr.count;
+    switch (_type) {
+        case TypeSystem:
+            return self.systemArr.count;
+            break;
+        case TypeCustom_category:
+            return self.customArr.count;
+            break;
+        case TypeCustom_subClass:
+            return self.subclassArr.count;
+            break;
+    }
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -99,7 +128,20 @@ static NSString *identifier = @"SystemTableViewController";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    NSString *str = _isSystem ? _systemArr[indexPath.row] : _customArr[indexPath.row];
+    
+    NSArray *tempArr;
+    switch (_type) {
+        case TypeSystem:
+            tempArr = _systemArr;
+            break;
+        case TypeCustom_category:
+            tempArr = _customArr;
+            break;
+        case TypeCustom_subClass:
+            tempArr = _subclassArr;
+            break;
+    }
+    NSString *str = tempArr[indexPath.row];
     cell.textLabel.text = str;
     return cell;
 }
@@ -108,7 +150,7 @@ static NSString *identifier = @"SystemTableViewController";
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (!_isSystem && (indexPath.row == 0 || indexPath.row == 1)) {
+    if (_type == TypeCustom_subClass) {
         PartViewViewController *vc = [[PartViewViewController alloc] init];
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         vc.titleStr = cell.textLabel.text;
@@ -121,7 +163,7 @@ static NSString *identifier = @"SystemTableViewController";
         
         NextViewController *vc = [[NextViewController alloc] init];
         [self.navigationController lj_pushViewController:vc transition:^(TransitionProperty *property) {
-            TransitionAnimationType animationType = _isSystem ? indexPath.row + 1 : indexPath.row + TransitionAnimationTypeDefault + 1;
+            TransitionAnimationType animationType = _type == TypeSystem ? indexPath.row + 1 : indexPath.row + TransitionAnimationTypeDefault + 1;
             property.animationType = animationType;
             property.backGestureType = BackGestureTypeLeft | BackGestureTypeRight;
         }];
@@ -129,7 +171,7 @@ static NSString *identifier = @"SystemTableViewController";
         
         NextViewController *vc = [[NextViewController alloc] init];
         [self.navigationController lj_presentViewController:vc transition:^(TransitionProperty *property) {
-            TransitionAnimationType animationType = _isSystem ? indexPath.row + 1 : indexPath.row + TransitionAnimationTypeDefault + 1;
+            TransitionAnimationType animationType = _type == TypeSystem ? indexPath.row + 1 : indexPath.row + TransitionAnimationTypeDefault + 1;
             property.animationType = animationType;
             property.backAnimationType = animationType;
             property.backGestureType = BackGestureTypeDown;

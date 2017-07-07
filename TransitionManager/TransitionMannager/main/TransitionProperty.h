@@ -71,18 +71,10 @@
 
 
 /**
- 可以创建并设置一个TransitionAnimator的subClass
+ 设置TransitionAnimator的subClass，实现该subClass里面的动画
  ps：此时 animationType 设置无效
  */
 @property (nonatomic, strong) TransitionAnimator *customAnimator;
 
-/**
- * 起始视图
- */
-@property (nonatomic, strong) UIView *startView;
-/**
- * 结束视图
- */
-@property (nonatomic, strong) UIView *endView;
 
 @end

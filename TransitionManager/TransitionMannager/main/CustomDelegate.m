@@ -47,7 +47,9 @@
     
     property.transitionType = transitionType;
     
-    property.customAnimator ? (_animator = property.customAnimator) : (_animator = [[TransitionAnimator alloc] init]);
+    if (!_animator) {
+        property.customAnimator ? (_animator = property.customAnimator) : (_animator = [[TransitionAnimator alloc] init]);
+    }
     _animator.transitionProperty = property;
     
     if (self.tempBlock) {
