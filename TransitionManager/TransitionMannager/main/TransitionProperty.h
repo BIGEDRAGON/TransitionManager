@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "TypeDefConfig.h"
 #import <UIKit/UIKit.h>
+@class TransitionAnimator;
 
 @interface TransitionProperty : NSObject
 
@@ -19,7 +20,7 @@
 
 /**
  * 转场方式 ：push,pop,present,dismiss
- * 局限性
+ * 局限性、作为标识使用
  */
 @property (nonatomic, assign) TransitionType transitionType;
 
@@ -30,6 +31,7 @@
 
 /**
  * 返回的转场动画类型
+ * 只在system中才可使用
  */
 @property (nonatomic, assign) TransitionAnimationType backAnimationType;
 
@@ -66,6 +68,13 @@
  * 均值 = 偏移量 / view宽或高
  */
 @property (nonatomic, assign) CGFloat interactivePercent;
+
+
+/**
+ 可以创建并设置一个TransitionAnimator的subClass
+ ps：此时 animationType 设置无效
+ */
+@property (nonatomic, strong) TransitionAnimator *customAnimator;
 
 /**
  * 起始视图

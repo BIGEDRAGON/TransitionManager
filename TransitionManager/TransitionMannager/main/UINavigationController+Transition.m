@@ -8,6 +8,9 @@
 
 #import "UINavigationController+Transition.h"
 #import "SwizzleMethodTool.h"
+#import <objc/runtime.h>
+
+static NSString * const customDelegateKey = @"customDelegate";
 
 @implementation UINavigationController (Transition)
 
@@ -27,8 +30,9 @@
 #pragma mark - Swizzle Method
 - (UIViewController *)lj_popViewControllerAnimated:(BOOL)animated
 {
-    if (self.viewControllers.lastObject.customDelegate.isCustomBackAnimation) {
-        self.delegate = self.viewControllers.lastObject.customDelegate;
+    CustomDelegate *customDelegate = objc_getAssociatedObject(self.viewControllers.lastObject, &customDelegateKey);
+    if (customDelegate.isCustomBackAnimation) {
+        self.delegate = customDelegate;
     }
     return [self lj_popViewControllerAnimated:animated];
 }
@@ -44,9 +48,13 @@
 
 - (void)lj_pushViewController:(UIViewController *)viewController transition:(TransitionBlock)transitionBlock
 {
-    viewController.customDelegate = [[CustomDelegate alloc] init];
-    viewController.customDelegate.transitionBlcok = transitionBlock;
-    self.delegate = viewController.customDelegate;
+    objc_setAssociatedObject(viewController, &customDelegateKey, [[CustomDelegate alloc] init], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    CustomDelegate *customDelegate = objc_getAssociatedObject(viewController, &customDelegateKey);
+    
+    if (customDelegate) {
+        customDelegate.transitionBlcok = transitionBlock;
+        self.delegate = customDelegate;
+    }
     
     [self pushViewController:viewController animated:YES];
 }

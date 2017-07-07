@@ -15,15 +15,6 @@ static NSString * const customDelegateKey = @"customDelegate";
 
 @implementation UIViewController (Transition)
 
-- (void)setCustomDelegate:(CustomDelegate *)customDelegate
-{
-    objc_setAssociatedObject(self, &customDelegateKey, customDelegate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-- (CustomDelegate *)customDelegate
-{
-    return objc_getAssociatedObject(self, &customDelegateKey);
-}
-
 #pragma mark - Hook
 + (void)load
 {
@@ -48,39 +39,48 @@ static NSString * const customDelegateKey = @"customDelegate";
 #pragma mark - Swizzle Method
 - (void)lj_dismissViewControllerAnimated:(BOOL)animated completion:(void (^ __nullable)(void))completion
 {
-    if (self.customDelegate.isCustomBackAnimation) {
-        self.transitioningDelegate = self.customDelegate;
+    CustomDelegate *customDelegate = objc_getAssociatedObject(self, &customDelegateKey);
+    if (customDelegate.isCustomBackAnimation) {
+        self.transitioningDelegate = customDelegate;
     }
     [self lj_dismissViewControllerAnimated:animated completion:completion];
 }
 - (void)lj_viewDidAppear:(BOOL)animated {
     [self lj_viewDidAppear:animated];
-    if (self.customDelegate.backGestureEnable) {
+    
+    CustomDelegate *customDelegate = objc_getAssociatedObject(self, &customDelegateKey);
+    if (customDelegate.backGestureEnable) {
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     }
 }
 - (void)lj_viewWillDisappear:(BOOL)animated {
     [self lj_viewWillDisappear:animated];
-    if (self.customDelegate.backGestureEnable) {
+    
+    CustomDelegate *customDelegate = objc_getAssociatedObject(self, &customDelegateKey);
+    if (customDelegate.backGestureEnable) {
         self.navigationController.interactivePopGestureRecognizer.enabled = YES;
     }
 }
 
 
 #pragma mark - Method
-- (void)lj_presentViewController:(UIViewController *_Nullable)vc animationType:(TransitionAnimationType)animationType completion:(void (^ __nullable)(void))completion
+- (void)lj_presentViewController:(UIViewController *)viewController animationType:(TransitionAnimationType)animationType completion:(void (^)(void))completion
 {
-    [self lj_presentViewController:vc transition:^(TransitionProperty *property) {
+    [self lj_presentViewController:viewController transition:^(TransitionProperty *property) {
         property.animationType = animationType;
     } completion:completion];
 }
-- (void)lj_presentViewController:(UIViewController *_Nullable)vc transition:(TransitionBlock _Nullable)transitionBlock completion:(void (^ __nullable)(void))completion
+- (void)lj_presentViewController:(UIViewController *)viewController transition:(TransitionBlock)transitionBlock completion:(void (^)(void))completion
 {
-    vc.customDelegate = [[CustomDelegate alloc] init];
-    vc.customDelegate.transitionBlcok = transitionBlock;
-    vc.transitioningDelegate = vc.customDelegate;
+    objc_setAssociatedObject(viewController, &customDelegateKey, [[CustomDelegate alloc] init], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    CustomDelegate *customDelegate = objc_getAssociatedObject(viewController, &customDelegateKey);
     
-    [self presentViewController:vc animated:YES completion:completion];
+    if (customDelegate) {
+        customDelegate.transitionBlcok = transitionBlock;
+        viewController.transitioningDelegate = customDelegate;
+    }
+    
+    [self presentViewController:viewController animated:YES completion:completion];
 }
 
 

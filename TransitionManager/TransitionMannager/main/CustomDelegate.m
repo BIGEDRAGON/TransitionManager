@@ -36,7 +36,6 @@
 #pragma mark - get TransitionAnimation对象
 - (TransitionAnimator *)getTransitionAnimationWithTransitionType:(TransitionType)transitionType
 {
-    !_animator ? _animator = [[TransitionAnimator alloc] init] : nil;
     
     TransitionProperty *property = [[TransitionProperty alloc] init];
     if (self.transitionBlcok) {
@@ -48,6 +47,7 @@
     
     property.transitionType = transitionType;
     
+    property.customAnimator ? (_animator = property.customAnimator) : (_animator = [[TransitionAnimator alloc] init]);
     _animator.transitionProperty = property;
     
     if (self.tempBlock) {

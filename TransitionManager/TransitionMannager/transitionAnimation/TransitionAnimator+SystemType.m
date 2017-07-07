@@ -8,21 +8,7 @@
 
 #import "TransitionAnimator+SystemType.h"
 
-@interface TransitionAnimator ()<CAAnimationDelegate>
-
-@end
-
 @implementation TransitionAnimator (SystemType)
-
-#pragma mark - <CAAnimationDelegate>
-- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
-{
-    if (flag) {
-        self.animationBlock ? self.animationBlock() : nil;
-        self.animationBlock = nil;
-    }
-}
-
 
 #pragma mark - systemTransition
 
@@ -35,7 +21,6 @@
 {
     CATransition *tranAnimation=[CATransition animation];
     tranAnimation.duration= self.transitionProperty.animationTime;
-    tranAnimation.delegate = self;
     switch (animationType) {
         case TransitionAnimationTypeSysFade:{
             tranAnimation.type=kCATransitionFade;

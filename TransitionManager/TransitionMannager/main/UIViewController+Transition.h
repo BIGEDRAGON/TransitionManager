@@ -12,10 +12,8 @@
 
 @interface UIViewController (Transition)
 
-@property (nonatomic, strong) CustomDelegate * _Nullable customDelegate;
-
-- (void)lj_presentViewController:(UIViewController *_Nullable)vc animationType:(TransitionAnimationType)animationType completion:(void (^ __nullable)(void))completion;
-- (void)lj_presentViewController:(UIViewController *_Nullable)vc transition:(TransitionBlock _Nullable)transitionBlock completion:(void (^ __nullable)(void))completion;
+- (void)lj_presentViewController:(UIViewController *)viewController animationType:(TransitionAnimationType)animationType completion:(void (^)(void))completion;
+- (void)lj_presentViewController:(UIViewController *)viewController transition:(TransitionBlock)transitionBlock completion:(void (^)(void))completion;
 
 @end
 

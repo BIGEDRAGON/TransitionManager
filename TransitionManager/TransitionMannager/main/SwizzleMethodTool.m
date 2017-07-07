@@ -13,10 +13,6 @@
 
 void swizzleMethod(Class cls, SEL originalSEL, SEL swizzledSEL)
 {
-    //    Method originalMethod = class_getInstanceMethod(cls, originalSEL);
-    //    Method swizzledMethod = class_getInstanceMethod(cls, swizzledSEL);
-    //    method_exchangeImplementations(swizzledMethod, originalMethod);
-    
     Method originalMethod = class_getInstanceMethod(cls, originalSEL);
     Method swizzledMethod = class_getInstanceMethod(cls, swizzledSEL);
     

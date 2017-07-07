@@ -21,7 +21,7 @@ iOS 7 自定义ViewController动画切换有以下几种方式：
 2. `UINavigationController` 的 `push` 和`pop`  切换
 3. 当控制器的 `modalPresentationStyle` 属性为 `UIModalPresentationFullScreen` 或 `UIModalPresentationCustom` 这两种模式时，可进行`Modal` 转场：`presentation` 和 `dismissal`
 
-之前在网上看了很多自定义转场相关的blog和demo，网上在这方面已流传甚广，我记录下这个简易博文，是提示封装能力、加深印象和回顾使用之用，如有问题可以@我，目前只**封装了上述转场类型的第2和第3点（全都支持交互式动画、既手势动画）** [demo在此 0.0](https://git.oschina.net/LongLJ/transitionmanager.git)
+之前在网上看了很多自定义转场相关的blog和demo，网上在这方面已流传甚广，我记录下这个简易博文，是提示封装能力、加深印象和回顾使用之用，如有问题可以@我，目前只**封装了上述转场类型的第2和第3点（全都支持交互式动画、既手势动画）** [demo在此 0.0](https://github.com/BIGEDRAGON/TransitionManager.git)
 
 ### 各位大哥，效果图献上（全部可设置手势）：
 

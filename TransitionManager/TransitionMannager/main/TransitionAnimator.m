@@ -57,7 +57,7 @@
             break;
     }
     
-    [self transitionAnimation];
+    [self transitionAnimationWithIsBack:isBack];
 }
 
 - (void)animationEnded:(BOOL)transitionCompleted
@@ -100,6 +100,10 @@
 
 
 #pragma mark - 执行动画方法
+- (void)transitionAnimationWithIsBack:(BOOL)isBack
+{
+    [self transitionAnimation];
+}
 - (void)transitionAnimation
 {
     // 执行系统动画方法

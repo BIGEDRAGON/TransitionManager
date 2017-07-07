@@ -8,7 +8,7 @@
 
 #import "TransitionAnimator.h"
 
-@interface TransitionAnimator (SystemType)<CAAnimationDelegate>
+@interface TransitionAnimator (SystemType)
 
 - (CATransition *)getSystemTransition;
 - (CATransition *)getSystemBackTransition;
