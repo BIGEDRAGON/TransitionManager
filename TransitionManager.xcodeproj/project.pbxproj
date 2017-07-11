@@ -12,7 +12,6 @@
 		F91191BA1F0F75E2002A5172 /* TransitionAnimator+System.m in Sources */ = {isa = PBXBuildFile; fileRef = F91191B31F0F75E2002A5172 /* TransitionAnimator+System.m */; };
 		F91191BB1F0F75E2002A5172 /* TransitionAnimator+SystemType.m in Sources */ = {isa = PBXBuildFile; fileRef = F91191B51F0F75E2002A5172 /* TransitionAnimator+SystemType.m */; };
 		F91191C41F0F7682002A5172 /* TransitionAnimatorViewMove.m in Sources */ = {isa = PBXBuildFile; fileRef = F91191C31F0F7682002A5172 /* TransitionAnimatorViewMove.m */; };
-		F91191C71F13124E002A5172 /* TransitionAnimatorRotationPresent.m in Sources */ = {isa = PBXBuildFile; fileRef = F91191C61F13124E002A5172 /* TransitionAnimatorRotationPresent.m */; };
 		F9307F881F062874000C2203 /* PartViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9307F871F062874000C2203 /* PartViewViewController.m */; };
 		F9383CB31EF79F36008CA788 /* SwizzleMethodTool.m in Sources */ = {isa = PBXBuildFile; fileRef = F9383CA61EF79F36008CA788 /* SwizzleMethodTool.m */; };
 		F9383CB41EF79F36008CA788 /* TransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = F9383CA81EF79F36008CA788 /* TransitionAnimator.m */; };
@@ -27,6 +26,7 @@
 		F93A08E11EF11D4700B93ED1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F93A08DF1EF11D4700B93ED1 /* Main.storyboard */; };
 		F93A08E31EF11D4700B93ED1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F93A08E21EF11D4700B93ED1 /* Assets.xcassets */; };
 		F93A08E61EF11D4700B93ED1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F93A08E41EF11D4700B93ED1 /* LaunchScreen.storyboard */; };
+		F98481801F14A7FD0058B45F /* TransitionAnimator+RotationPresent.m in Sources */ = {isa = PBXBuildFile; fileRef = F984817F1F14A7FC0058B45F /* TransitionAnimator+RotationPresent.m */; };
 		F9F492281EF36B29009A7620 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F492271EF36B29009A7620 /* TableViewController.m */; };
 		F9F4922E1EF36F26009A7620 /* NextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F4922D1EF36F26009A7620 /* NextViewController.m */; };
 /* End PBXBuildFile section */
@@ -42,8 +42,6 @@
 		F91191B51F0F75E2002A5172 /* TransitionAnimator+SystemType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TransitionAnimator+SystemType.m"; sourceTree = "<group>"; };
 		F91191C21F0F7682002A5172 /* TransitionAnimatorViewMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionAnimatorViewMove.h; sourceTree = "<group>"; };
 		F91191C31F0F7682002A5172 /* TransitionAnimatorViewMove.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransitionAnimatorViewMove.m; sourceTree = "<group>"; };
-		F91191C51F13124E002A5172 /* TransitionAnimatorRotationPresent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionAnimatorRotationPresent.h; sourceTree = "<group>"; };
-		F91191C61F13124E002A5172 /* TransitionAnimatorRotationPresent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransitionAnimatorRotationPresent.m; sourceTree = "<group>"; };
 		F9307F861F062874000C2203 /* PartViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartViewViewController.h; sourceTree = "<group>"; };
 		F9307F871F062874000C2203 /* PartViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PartViewViewController.m; sourceTree = "<group>"; };
 		F9383CA51EF79F36008CA788 /* SwizzleMethodTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwizzleMethodTool.h; sourceTree = "<group>"; };
@@ -73,6 +71,8 @@
 		F93A08E51EF11D4700B93ED1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F93A08E71EF11D4700B93ED1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F93A09271EF12ED600B93ED1 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
+		F984817E1F14A7FC0058B45F /* TransitionAnimator+RotationPresent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TransitionAnimator+RotationPresent.h"; sourceTree = "<group>"; };
+		F984817F1F14A7FC0058B45F /* TransitionAnimator+RotationPresent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TransitionAnimator+RotationPresent.m"; sourceTree = "<group>"; };
 		F9F492261EF36B29009A7620 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		F9F492271EF36B29009A7620 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		F9F4922C1EF36F26009A7620 /* NextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NextViewController.h; sourceTree = "<group>"; };
@@ -101,6 +101,8 @@
 				F91191AF1F0F75E2002A5172 /* TransitionAnimator+Page.m */,
 				F91191B01F0F75E2002A5172 /* TransitionAnimator+Portal.h */,
 				F91191B11F0F75E2002A5172 /* TransitionAnimator+Portal.m */,
+				F984817E1F14A7FC0058B45F /* TransitionAnimator+RotationPresent.h */,
+				F984817F1F14A7FC0058B45F /* TransitionAnimator+RotationPresent.m */,
 			);
 			path = AnimationCategorys;
 			sourceTree = "<group>";
@@ -110,8 +112,6 @@
 			children = (
 				F91191C21F0F7682002A5172 /* TransitionAnimatorViewMove.h */,
 				F91191C31F0F7682002A5172 /* TransitionAnimatorViewMove.m */,
-				F91191C51F13124E002A5172 /* TransitionAnimatorRotationPresent.h */,
-				F91191C61F13124E002A5172 /* TransitionAnimatorRotationPresent.m */,
 			);
 			path = AnimationSubClass;
 			sourceTree = "<group>";
@@ -278,7 +278,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F91191C41F0F7682002A5172 /* TransitionAnimatorViewMove.m in Sources */,
-				F91191C71F13124E002A5172 /* TransitionAnimatorRotationPresent.m in Sources */,
 				F9F492281EF36B29009A7620 /* TableViewController.m in Sources */,
 				F9383CB31EF79F36008CA788 /* SwizzleMethodTool.m in Sources */,
 				F9383D731EF90BE1008CA788 /* CustomDelegate.m in Sources */,
@@ -290,6 +289,7 @@
 				F9383D791EFA12D4008CA788 /* PercentInteractive.m in Sources */,
 				F93A08DB1EF11D4700B93ED1 /* AppDelegate.m in Sources */,
 				F9383CB51EF79F36008CA788 /* TransitionProperty.m in Sources */,
+				F98481801F14A7FD0058B45F /* TransitionAnimator+RotationPresent.m in Sources */,
 				F9383CB61EF79F36008CA788 /* UINavigationController+Transition.m in Sources */,
 				F93A08D81EF11D4700B93ED1 /* main.m in Sources */,
 				F91191BA1F0F75E2002A5172 /* TransitionAnimator+System.m in Sources */,

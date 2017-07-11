@@ -1,16 +1,16 @@
 //
-//  TransitionAnimatorRotationPresent.m
+//  TransitionAnimator+RotationPresent.m
 //  TransitionManager
 //
-//  Created by long on 2017/7/10.
+//  Created by long on 2017/7/11.
 //  Copyright © 2017年 xiaolong. All rights reserved.
 //
 
-#import "TransitionAnimatorRotationPresent.h"
+#import "TransitionAnimator+RotationPresent.h"
 
-@implementation TransitionAnimatorRotationPresent
+@implementation TransitionAnimator (RotationPresent)
 
-- (void)transitionAnimationWithIsBack:(BOOL)isBack
+- (void)transitionAnimatorRotationPresentWithIsBack:(BOOL)isBack
 {
     if (!isBack) {
         [self transitionNextRotationPresentAnimator];
@@ -32,7 +32,7 @@
     [containerView addSubview:toSnapshotView];
     [containerView insertSubview:toView atIndex:0];
     
-    CGFloat angle = (self.direction == RotationPresentDirectionFromLeft) ? -M_PI_2 : M_PI_2;
+    CGFloat angle = (self.transitionProperty.animationType == TransitionAnimationTypeRotationPresentFromLeft) ? -M_PI_2 : M_PI_2;
     toSnapshotView.transform = CGAffineTransformMakeRotation(angle);
     
     [UIView animateWithDuration:self.transitionProperty.animationTime delay:0 usingSpringWithDamping:0.7 initialSpringVelocity:1 / 0.7 options:0 animations:^{
@@ -61,7 +61,7 @@
     
     
     [UIView animateWithDuration:self.transitionProperty.animationTime animations:^{
-        CGFloat angle = (self.direction == RotationPresentDirectionFromLeft) ? -M_PI_2 : M_PI_2;
+        CGFloat angle = (self.transitionProperty.animationType == TransitionAnimationTypeRotationPresentFromLeft) ? -M_PI_2 : M_PI_2;
         if (tempView.transform.b > 0)
         {
             tempView.transform = CGAffineTransformMakeRotation(angle);

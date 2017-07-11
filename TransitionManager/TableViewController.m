@@ -59,7 +59,8 @@ static NSString *identifier = @"SystemTableViewController";
                        @"NormalOpenPortalVertical",@"NormalOpenPortalHorizontal",
                        @"NormalClosePortalVertical",@"NormalClosePortalHorizontal",
                        @"SolidOpenPortalVertical",@"SolidOpenPortalHorizontal",
-                       @"SolidClosePortalVertical",@"SolidClosePortalHorizontal"
+                       @"SolidClosePortalVertical",@"SolidClosePortalHorizontal",
+                       @"RotationPresentLeft",@"RotationPresentRight"
                        ];
     }
     return _customArr;
@@ -69,7 +70,7 @@ static NSString *identifier = @"SystemTableViewController";
 {
     if (!_subclassArr) {
         _subclassArr = @[@"ViewNormalMove",@"ViewSpringMove",
-                         @"RotationPresentLeft",@"RotationPresentRight"];
+                         ];
     }
     return _subclassArr;
 }
@@ -160,24 +161,6 @@ static NSString *identifier = @"SystemTableViewController";
             vc.titleStr = cell.textLabel.text;
             vc.isPush = _isPush;
             [self.navigationController pushViewController:vc animated:YES];
-        }else {
-            if (_isPush) {
-                
-                [self.navigationController lj_pushViewController:vc transition:^(TransitionProperty *property) {
-                    
-                    property.backGestureType = BackGestureTypeLeft | BackGestureTypeRight;
-                    
-                    property.customAnimator = [self customSubClassAnimatorRow:indexPath.row];
-                }];
-            }else {
-                
-                [self.navigationController lj_presentViewController:vc transition:^(TransitionProperty *property) {
-                    property.animationTime = 0.5;
-                    property.backGestureType = BackGestureTypeDown;
-                    
-                    property.customAnimator = [self customSubClassAnimatorRow:indexPath.row];
-                } completion:nil];
-            }
         }
         return;
     }
@@ -203,22 +186,22 @@ static NSString *identifier = @"SystemTableViewController";
 }
 
 
-- (id)customSubClassAnimatorRow:(NSInteger)row
-{
-    id animator = nil;
-    switch (row) {
-        case 2:
-        case 3:{
-            TransitionAnimatorRotationPresent *rotation = [[TransitionAnimatorRotationPresent alloc] init];
-            rotation.direction = row-2;
-            return rotation;
-        }
-            break;
-            
-        default:
-            break;
-    }
-    return animator;
-}
+//- (id)customSubClassAnimatorRow:(NSInteger)row
+//{
+//    id animator = nil;
+//    switch (row) {
+//        case 2:
+//        case 3:{
+//            TransitionAnimatorRotationPresent *rotation = [[TransitionAnimatorRotationPresent alloc] init];
+//            rotation.direction = row-2;
+//            return rotation;
+//        }
+//            break;
+//            
+//        default:
+//            break;
+//    }
+//    return animator;
+//}
 
 @end

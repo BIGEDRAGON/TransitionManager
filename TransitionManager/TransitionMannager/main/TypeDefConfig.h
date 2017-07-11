@@ -72,6 +72,9 @@ typedef NS_ENUM(NSInteger, TransitionAnimationType){
     TransitionAnimationTypeSolidOpenPortalHorizontal,   // 水平开门式(立体)
     TransitionAnimationTypeSolidClosePortalVertical,    // 垂直关门式(立体)
     TransitionAnimationTypeSolidClosePortalHorizontal,  // 水平关门式(立体)
+    
+    TransitionAnimationTypeRotationPresentFromLeft, // 左旋转弹出
+    TransitionAnimationTypeRotationPresentFromRight,// 右旋转弹出
 };
 
 typedef NS_ENUM(NSInteger,TransitionType){

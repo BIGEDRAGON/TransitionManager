@@ -13,6 +13,7 @@
 #import "TransitionAnimator+System.h"
 #import "TransitionAnimator+Page.h"
 #import "TransitionAnimator+Portal.h"
+#import "TransitionAnimator+RotationPresent.h"
 
 @interface TransitionAnimator ()
 {
@@ -196,6 +197,16 @@
 - (void)customTransitionAnimatorWithSolidClosePortalHorizontal
 {
     [self transitionAnimatorPortalWithIsBack:isBack];
+}
+
+#pragma mark RotationPresent
+- (void)customTransitionAnimatorWithRotationPresentFromLeft
+{
+    [self transitionAnimatorRotationPresentWithIsBack:isBack];
+}
+- (void)customTransitionAnimatorWithRotationPresentFromRight
+{
+    [self transitionAnimatorRotationPresentWithIsBack:isBack];
 }
 
 
