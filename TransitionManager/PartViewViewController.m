@@ -82,7 +82,7 @@
     }else {
         
         [self.navigationController lj_presentViewController:vc transition:^(TransitionProperty *property) {
-            property.animationTime = 0.5;
+            property.animationTime = 1;
             property.backGestureType = BackGestureTypeDown;
             
             TransitionAnimatorViewMove *viewmove = [[TransitionAnimatorViewMove alloc] init];

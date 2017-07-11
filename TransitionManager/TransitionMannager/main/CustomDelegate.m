@@ -11,6 +11,7 @@
 #import "PercentInteractive.h"
 
 @interface CustomDelegate ()
+//@property (nonatomic, assign) BackGestureType backGestureType;
 @property (nonatomic, strong) TransitionAnimator *animator;
 @property (nonatomic, strong) PercentInteractive *interactive;
 
@@ -26,7 +27,7 @@
 {
     __weak CustomDelegate *WeakSelf = self;
     self.tempBlock = ^{
-        if (_isCustomBackAnimation && _backGestureType != BackGestureTypeNone) {
+        if (_isCustomBackAnimation && _animator.transitionProperty.backGestureType != BackGestureTypeNone) {
             
             !WeakSelf.interactive ? WeakSelf.interactive = [PercentInteractive interactiveWithVC:vc animator:WeakSelf.animator] : nil;
         }
@@ -42,7 +43,6 @@
         self.transitionBlcok(property);
     }
     self.backGestureEnable = property.backGestureType ? NO : YES;
-    self.backGestureType = property.backGestureType;
     self.isCustomBackAnimation = !property.isSystemBackAnimation;
     
     property.transitionType = transitionType;
