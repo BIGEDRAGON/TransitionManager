@@ -68,7 +68,8 @@ static NSString *identifier = @"SystemTableViewController";
 - (NSArray *)subclassArr
 {
     if (!_subclassArr) {
-        _subclassArr = @[@"ViewNormalMove",@"ViewSpringMove"];
+        _subclassArr = @[@"ViewNormalMove",@"ViewSpringMove",
+                         @"RotationPresentLeft",@"RotationPresentRight"];
     }
     return _subclassArr;
 }
@@ -150,18 +151,39 @@ static NSString *identifier = @"SystemTableViewController";
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    NextViewController *vc = [[NextViewController alloc] init];
+    
     if (_type == TypeCustom_subClass) {
-        PartViewViewController *vc = [[PartViewViewController alloc] init];
-        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        vc.titleStr = cell.textLabel.text;
-        vc.isPush = _isPush;
-        [self.navigationController pushViewController:vc animated:YES];
+        if (indexPath.row <= 1) {
+            PartViewViewController *vc = [[PartViewViewController alloc] init];
+            UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+            vc.titleStr = cell.textLabel.text;
+            vc.isPush = _isPush;
+            [self.navigationController pushViewController:vc animated:YES];
+        }else {
+            if (_isPush) {
+                
+                [self.navigationController lj_pushViewController:vc transition:^(TransitionProperty *property) {
+                    
+                    property.backGestureType = BackGestureTypeLeft | BackGestureTypeRight;
+                    
+                    property.customAnimator = [self customSubClassAnimatorRow:indexPath.row];
+                }];
+            }else {
+                
+                [self.navigationController lj_presentViewController:vc transition:^(TransitionProperty *property) {
+                    property.animationTime = 0.5;
+                    property.backGestureType = BackGestureTypeDown;
+                    
+                    property.customAnimator = [self customSubClassAnimatorRow:indexPath.row];
+                } completion:nil];
+            }
+        }
         return;
     }
     
     if (_isPush) {
         
-        NextViewController *vc = [[NextViewController alloc] init];
         [self.navigationController lj_pushViewController:vc transition:^(TransitionProperty *property) {
             TransitionAnimationType animationType = _type == TypeSystem ? indexPath.row + 1 : indexPath.row + TransitionAnimationTypeDefault + 1;
             property.animationType = animationType;
@@ -169,7 +191,6 @@ static NSString *identifier = @"SystemTableViewController";
         }];
     }else {
         
-        NextViewController *vc = [[NextViewController alloc] init];
         [self.navigationController lj_presentViewController:vc transition:^(TransitionProperty *property) {
             TransitionAnimationType animationType = _type == TypeSystem ? indexPath.row + 1 : indexPath.row + TransitionAnimationTypeDefault + 1;
             property.animationType = animationType;
@@ -179,6 +200,25 @@ static NSString *identifier = @"SystemTableViewController";
              self.title = @"present后变化标题";
          }];
     }
+}
+
+
+- (id)customSubClassAnimatorRow:(NSInteger)row
+{
+    id animator = nil;
+    switch (row) {
+        case 2:
+        case 3:{
+            TransitionAnimatorRotationPresent *rotation = [[TransitionAnimatorRotationPresent alloc] init];
+            rotation.direction = row-2;
+            return rotation;
+        }
+            break;
+            
+        default:
+            break;
+    }
+    return animator;
 }
 
 @end
