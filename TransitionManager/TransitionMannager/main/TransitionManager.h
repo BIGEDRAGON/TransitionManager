@@ -11,6 +11,6 @@
 
 #import "UINavigationController+Transition.h"
 #import "TransitionAnimatorViewMove.h"
-//#import "TransitionAnimatorRotationPresent.h"
+#import "TransitionAnimatorCircleSpread.h"
 
 #endif /* TransitionManager_h */

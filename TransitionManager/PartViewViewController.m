@@ -56,14 +56,8 @@
 - (void)imageViewClick:(UITapGestureRecognizer *)tap
 {
     NextViewController *vc = [[NextViewController alloc] init];
-    ViewMoveType viewMoveType;
-    if ([_titleStr containsString:@"Normal"]) {
-        viewMoveType = ViewMoveTypeViewNormalMove;
-    }else {
-        viewMoveType = ViewMoveTypeViewSpringMove;
-    }
     
-    __weak NextViewController *weakVC = vc;
+    __weak PartViewViewController *weakSelf = self;
     if (_isPush) {
         
         [self.navigationController lj_pushViewController:vc transition:^(TransitionProperty *property) {
@@ -73,11 +67,7 @@
             // 设置了customAnimator，此时animationType设置无效
 //            property.animationType = TransitionAnimationTypeDefault;
             
-            TransitionAnimatorViewMove *viewmove = [[TransitionAnimatorViewMove alloc] init];
-            viewmove.viewMoveType = viewMoveType;
-            viewmove.startView = tap.view;
-            viewmove.endView = weakVC.imageV;
-            property.customAnimator = viewmove;
+            property.customAnimator = [weakSelf customSubClassAnimatorWithVC:vc WithTap:tap];
         }];
     }else {
         
@@ -85,13 +75,37 @@
             property.animationTime = 1;
             property.backGestureType = BackGestureTypeDown;
             
-            TransitionAnimatorViewMove *viewmove = [[TransitionAnimatorViewMove alloc] init];
-            viewmove.viewMoveType = viewMoveType;
-            viewmove.startView = tap.view;
-            viewmove.endView = weakVC.imageV;
-            property.customAnimator = viewmove;
+            property.customAnimator = [weakSelf customSubClassAnimatorWithVC:vc WithTap:tap];
         } completion:nil];
     }
+}
+
+- (id)customSubClassAnimatorWithVC:(NextViewController *)vc WithTap:(UITapGestureRecognizer *)tap
+{
+    switch (self.row) {
+        case 0:
+        case 1:{
+            TransitionAnimatorViewMove *animator = [[TransitionAnimatorViewMove alloc] init];
+            animator.viewMoveType = self.row;
+            animator.startView = tap.view;
+            animator.endView = vc.imageV;
+            return animator;
+        }
+            break;
+        case 2:
+        case 3:{
+            TransitionAnimatorCircleSpread *animator = [[TransitionAnimatorCircleSpread alloc] init];
+            if (self.row == 3) {
+                animator.startPoint = tap.view.center;
+            }
+            return animator;
+        }
+            break;
+            
+        default:
+            break;
+    }
+    return nil;
 }
 
 

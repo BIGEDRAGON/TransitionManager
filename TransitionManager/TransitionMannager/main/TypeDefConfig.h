@@ -57,7 +57,7 @@ typedef NS_ENUM(NSInteger, TransitionAnimationType){
     TransitionAnimationTypeSysCameraIrisHollowClose,//关镜头
     
     /*************** 自定义 ***************/
-    TransitionAnimationTypeDefault,// TransitionAnimationTypeSysPushFromLeft
+    TransitionAnimationTypeDefault,// TransitionAnimationTypeSysRevealFromRight
     
     TransitionAnimationTypePageToLeft,  // 左翻页
     TransitionAnimationTypePageToRight, // 右翻页
@@ -75,6 +75,11 @@ typedef NS_ENUM(NSInteger, TransitionAnimationType){
     
     TransitionAnimationTypeRotationPresentFromLeft, // 左旋转弹出
     TransitionAnimationTypeRotationPresentFromRight,// 右旋转弹出
+    
+    TransitionAnimationTypeLineSpreadFromLeft,  // 左线性扩展
+    TransitionAnimationTypeLineSpreadFromRight, // 右线性扩展
+    TransitionAnimationTypeLineSpreadFromTop,   // 上线性扩展
+    TransitionAnimationTypeLineSpreadFromBottom,// 下线性扩展
 };
 
 typedef NS_ENUM(NSInteger,TransitionType){

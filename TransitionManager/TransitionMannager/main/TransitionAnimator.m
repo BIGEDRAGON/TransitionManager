@@ -14,6 +14,7 @@
 #import "TransitionAnimator+Page.h"
 #import "TransitionAnimator+Portal.h"
 #import "TransitionAnimator+RotationPresent.h"
+#import "TransitionAnimator+LineSpread.h"
 
 @interface TransitionAnimator ()
 {
@@ -41,7 +42,7 @@
     
     // 统一处理Default动画
     if (_transitionProperty.animationType == TransitionAnimationTypeDefault) {
-        _transitionProperty.animationType = TransitionAnimationTypeSysPushFromLeft;
+        _transitionProperty.animationType = TransitionAnimationTypeSysRevealFromRight;
     }
     
     // 执行动画
@@ -95,6 +96,16 @@
                 removeDelegateBlock();
                 break;
         }
+    }
+}
+
+
+#pragma mark - <CAAnimationDelegate>
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+    if (flag) {
+        self.animationBlock ? self.animationBlock() : nil;
+        self.animationBlock = nil;
     }
 }
 
@@ -207,6 +218,24 @@
 - (void)customTransitionAnimatorWithRotationPresentFromRight
 {
     [self transitionAnimatorRotationPresentWithIsBack:isBack];
+}
+
+#pragma mark LineSpread
+- (void)customTransitionAnimatorWithLineSpreadFromLeft
+{
+    [self transitionAnimatorLineSpreadWithIsBack:isBack];
+}
+- (void)customTransitionAnimatorWithLineSpreadFromRight
+{
+    [self transitionAnimatorLineSpreadWithIsBack:isBack];
+}
+- (void)customTransitionAnimatorWithLineSpreadFromTop
+{
+    [self transitionAnimatorLineSpreadWithIsBack:isBack];
+}
+- (void)customTransitionAnimatorWithLineSpreadFromBottom
+{
+    [self transitionAnimatorLineSpreadWithIsBack:isBack];
 }
 
 

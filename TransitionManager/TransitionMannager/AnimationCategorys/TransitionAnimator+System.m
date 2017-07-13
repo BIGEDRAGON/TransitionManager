@@ -8,25 +8,8 @@
 
 #import "TransitionAnimator+System.h"
 #import "TransitionAnimator+SystemType.h"
-#import <objc/runtime.h>
-
-static NSString * const animationBlockKey = @"animationBlock";
-
-@interface TransitionAnimator ()<CAAnimationDelegate>
-
-@end
 
 @implementation TransitionAnimator (System)
-
-#pragma mark - <CAAnimationDelegate>
-- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
-{
-    if (flag) {
-        void(^animationBlock)() = objc_getAssociatedObject(self, &animationBlockKey);
-        animationBlock ? animationBlock() : nil;
-        animationBlock = nil;
-    }
-}
 
 - (void)systemTransitionAnimatorWithIsBack:(BOOL)isBack
 {
@@ -44,8 +27,7 @@ static NSString * const animationBlockKey = @"animationBlock";
     
     __weak TransitionAnimator *WeakSelf = self;
     
-    objc_setAssociatedObject(self, &animationBlockKey, (^(){
-        
+    self.animationBlock = ^{
         // 移除快照
         [toSnapshotView removeFromSuperview];
         
@@ -59,7 +41,7 @@ static NSString * const animationBlockKey = @"animationBlock";
             // 设置transitionContext通知系统动画执行完毕
             [WeakSelf.transitionContext completeTransition:YES];
         }
-    }), OBJC_ASSOCIATION_COPY_NONATOMIC);
+    };
     
 }
 

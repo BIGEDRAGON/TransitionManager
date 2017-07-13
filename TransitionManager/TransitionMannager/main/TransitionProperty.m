@@ -16,7 +16,6 @@
     if (self) {
         _animationTime = 0.5;
         _animationType = TransitionAnimationTypeDefault;
-//        _backGestureEnable = YES;
         _backGestureType = BackGestureTypeRight;
         _autoShowAndHideNavBar = NO;
         _showAndHideNavBarTime = 0.25;

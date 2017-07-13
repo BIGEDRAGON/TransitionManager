@@ -60,7 +60,8 @@ static NSString *identifier = @"SystemTableViewController";
                        @"NormalClosePortalVertical",@"NormalClosePortalHorizontal",
                        @"SolidOpenPortalVertical",@"SolidOpenPortalHorizontal",
                        @"SolidClosePortalVertical",@"SolidClosePortalHorizontal",
-                       @"RotationPresentLeft",@"RotationPresentRight"
+                       @"RotationPresentLeft",@"RotationPresentRight",
+                       @"LineSpreadLeft",@"LineSpreadRight",@"LineSpreadTop",@"LineSpreadBottom",
                        ];
     }
     return _customArr;
@@ -70,7 +71,7 @@ static NSString *identifier = @"SystemTableViewController";
 {
     if (!_subclassArr) {
         _subclassArr = @[@"ViewNormalMove",@"ViewSpringMove",
-                         ];
+                         @"CenterCircleSpread",@"TouchCircleSpread"];
     }
     return _subclassArr;
 }
@@ -155,11 +156,12 @@ static NSString *identifier = @"SystemTableViewController";
     NextViewController *vc = [[NextViewController alloc] init];
     
     if (_type == TypeCustom_subClass) {
-        if (indexPath.row <= 1) {
+        if (indexPath.row <= 3) {
             PartViewViewController *vc = [[PartViewViewController alloc] init];
             UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
             vc.titleStr = cell.textLabel.text;
             vc.isPush = _isPush;
+            vc.row = indexPath.row;
             [self.navigationController pushViewController:vc animated:YES];
         }
         return;
@@ -184,24 +186,5 @@ static NSString *identifier = @"SystemTableViewController";
          }];
     }
 }
-
-
-//- (id)customSubClassAnimatorRow:(NSInteger)row
-//{
-//    id animator = nil;
-//    switch (row) {
-//        case 2:
-//        case 3:{
-//            TransitionAnimatorRotationPresent *rotation = [[TransitionAnimatorRotationPresent alloc] init];
-//            rotation.direction = row-2;
-//            return rotation;
-//        }
-//            break;
-//            
-//        default:
-//            break;
-//    }
-//    return animator;
-//}
 
 @end

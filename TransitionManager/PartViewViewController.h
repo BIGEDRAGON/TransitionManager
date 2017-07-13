@@ -12,5 +12,6 @@
 
 @property (nonatomic, strong) NSString *titleStr;
 @property (nonatomic, assign) BOOL isPush;
+@property (nonatomic, assign) NSInteger row;
 
 @end

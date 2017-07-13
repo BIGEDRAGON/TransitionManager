@@ -42,11 +42,6 @@
 @property (nonatomic, assign) BOOL isSystemBackAnimation;
 
 /**
- * 是否通过手势返回,默认为YES
- */
-//@property (nonatomic, assign) BOOL backGestureEnable;
-
-/**
  * 返回上个界面的手势 默认：右滑BackGestureTypeRight
  * 当为BackGestureTypeNone时，手势返回无效
  * isSystemBackAnimation为YES，该字段无效，默认：右滑BackGestureTypeRight
