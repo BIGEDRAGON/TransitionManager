@@ -62,6 +62,7 @@ static NSString *identifier = @"SystemTableViewController";
                        @"SolidClosePortalVertical",@"SolidClosePortalHorizontal",
                        @"RotationPresentLeft",@"RotationPresentRight",
                        @"LineSpreadLeft",@"LineSpreadRight",@"LineSpreadTop",@"LineSpreadBottom",
+                       @"SolidLineSpreadLeft",@"SolidLineSpreadRight",@"SolidLineSpreadTop",@"SolidLineSpreadBottom",
                        ];
     }
     return _customArr;

@@ -80,6 +80,11 @@ typedef NS_ENUM(NSInteger, TransitionAnimationType){
     TransitionAnimationTypeLineSpreadFromRight, // 右线性扩展
     TransitionAnimationTypeLineSpreadFromTop,   // 上线性扩展
     TransitionAnimationTypeLineSpreadFromBottom,// 下线性扩展
+    
+    TransitionAnimationTypeSolidLineSpreadFromLeft,  // 左线性扩展(立体)
+    TransitionAnimationTypeSolidLineSpreadFromRight, // 右线性扩展(立体)
+    TransitionAnimationTypeSolidLineSpreadFromTop,   // 上线性扩展(立体)
+    TransitionAnimationTypeSolidLineSpreadFromBottom,// 下线性扩展(立体)
 };
 
 typedef NS_ENUM(NSInteger,TransitionType){

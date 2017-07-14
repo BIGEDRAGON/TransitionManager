@@ -25,21 +25,42 @@
     CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
     
     
-    CGRect rect0 ;
+    // solid
+    if ((NSInteger)self.transitionProperty.animationType >= (NSInteger)TransitionAnimationTypeSolidLineSpreadFromLeft) {
+        
+        
+        [UIView animateWithDuration:self.transitionProperty.animationTime animations:^{
+            CGFloat scale = 0.8;
+            toView.layer.transform = CATransform3DMakeScale(scale, scale, 1.0);
+            fromView.layer.transform = CATransform3DMakeScale(scale, scale, 1.0);
+        } completion:^(BOOL finished) {
+            toView.layer.transform = CATransform3DIdentity;
+            fromView.layer.transform = CATransform3DIdentity;
+        }];
+    }
+    
+    
+    CGRect rect0 = CGRectZero;
     CGRect rect1 = CGRectMake(0, 0, screenWidth, screenHeight);
     
     switch (self.transitionProperty.animationType) {
         case TransitionAnimationTypeLineSpreadFromLeft:
+        case TransitionAnimationTypeSolidLineSpreadFromLeft:
             rect0 = isBack ? CGRectMake(screenWidth-2, 0, 2, screenHeight) : CGRectMake(0, 0, 2, screenHeight);
             break;
         case TransitionAnimationTypeLineSpreadFromRight:
+        case TransitionAnimationTypeSolidLineSpreadFromRight:
             rect0 = isBack ? CGRectMake(0, 0, 2, screenHeight) : CGRectMake(screenWidth, 0, 2, screenHeight);
             break;
         case TransitionAnimationTypeLineSpreadFromTop:
+        case TransitionAnimationTypeSolidLineSpreadFromTop:
             rect0 = isBack ? CGRectMake(0, screenHeight - 2 , screenWidth, 2) : CGRectMake(0, 0, screenWidth, 2);
             break;
-        default:
+        case TransitionAnimationTypeLineSpreadFromBottom:
+        case TransitionAnimationTypeSolidLineSpreadFromBottom:
             rect0 = isBack ? CGRectMake(0, 0, screenWidth, 2) : CGRectMake(0, screenHeight , screenWidth, 2);
+            break;
+        default:
             break;
     }
     
@@ -60,10 +81,15 @@
     __weak TransitionAnimator *WeakSelf = self;
     self.animationBlock = ^(){
         
-        toView.hidden = NO;
-        [tempView removeFromSuperview];
         
-        [WeakSelf.transitionContext completeTransition:![WeakSelf.transitionContext transitionWasCancelled]];
+        if ([WeakSelf.transitionContext transitionWasCancelled]) {
+            [WeakSelf.transitionContext completeTransition:NO];
+            [tempView removeFromSuperview];
+        }else {
+            [WeakSelf.transitionContext completeTransition:YES];
+            toView.hidden = NO;
+            [tempView removeFromSuperview];
+        }
     };
 }
 

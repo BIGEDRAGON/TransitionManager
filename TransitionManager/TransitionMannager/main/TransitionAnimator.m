@@ -238,6 +238,24 @@
     [self transitionAnimatorLineSpreadWithIsBack:isBack];
 }
 
+#pragma mark SolidLineSpread
+- (void)customTransitionAnimatorWithSolidLineSpreadFromLeft
+{
+    [self transitionAnimatorLineSpreadWithIsBack:isBack];
+}
+- (void)customTransitionAnimatorWithSolidLineSpreadFromRight
+{
+    [self transitionAnimatorLineSpreadWithIsBack:isBack];
+}
+- (void)customTransitionAnimatorWithSolidLineSpreadFromTop
+{
+    [self transitionAnimatorLineSpreadWithIsBack:isBack];
+}
+- (void)customTransitionAnimatorWithSolidLineSpreadFromBottom
+{
+    [self transitionAnimatorLineSpreadWithIsBack:isBack];
+}
+
 
 @end
 
